@@ -1,0 +1,11 @@
+{
+	"Route":
+	{
+		"Upload_files" : "upload_files/route.json"
+	},
+
+	"Upload_files":
+	{
+		"path_buffer":"web/buffer/"
+	}
+}

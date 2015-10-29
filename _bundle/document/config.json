@@ -1,0 +1,10 @@
+{
+	"Route":
+	{
+		"Document" : "document/route.json"
+	},
+	"Roles":
+	{
+		"DOCUMENT":"DOCUMENT"
+	}
+}

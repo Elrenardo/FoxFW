@@ -1,0 +1,23 @@
+{
+	"Upload_files_upload":
+	{
+		"path"       : "upload_files",
+		"method"     : "POST",
+		"controller" : "Upload_files#add",
+		"firewall"   : "ADMIN"
+	},
+	"Upload_files_removeBuffer":
+	{
+		"path"       : "upload_files_removeBuffer/[**:id]",
+		"method"     : "GET",
+		"controller" : "Upload_files#removeFileBuffer",
+		"firewall"   : "ADMIN"
+	},
+	"Upload_files_remove":
+	{
+		"path"       : "upload_files_remove/[**:id]",
+		"method"     : "GET",
+		"controller" : "Upload_files#removeFile",
+		"firewall"   : "ADMIN"
+	}
+}

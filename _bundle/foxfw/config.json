@@ -1,0 +1,33 @@
+{
+	"Model":
+	{
+	},
+
+	"Addon":
+	{
+		"addon"    : "foxfw/addons/panelAdmin.php",
+		"foxfwTwig": "foxfw/addons/twig.php"
+	},
+
+	"Route":
+	{
+		"foxfw" : "foxfw/route.json"
+	},
+
+	"PanelAdmin":
+	{
+		"cache"  : "panelAdmin.html",
+		"method" : "viewPanelAdmin",
+		"render" : "foxfw/view/foxfw_pattern_panelAdmin.html.twig"
+	},
+
+	"Roles":
+	{
+		"CONFIG":"CONFIG"
+	},
+
+	"FoxFW":
+	{
+		"email" : "contact@helloWorld.fr"
+	}
+}

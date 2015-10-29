@@ -1,0 +1,168 @@
+*,*:after,*:before
+{
+    margin:0px;
+    padding:0px;
+}
+
+html, body
+{
+    height: 100%;
+    overflow-x : hidden;
+}
+body
+{
+    min-height: 100%;
+    background-color: #F8F8FF;
+}
+
+table th, .souligner
+{
+    text-decoration : underline;
+}
+p, div
+{
+    font-family: Helvetica, sans-serif;
+}
+legend
+{
+    text-align: center;
+}
+/*-------------------------------------------------------*/
+
+
+#header,#menu,#footer
+{
+    min-width: 1100px;
+}
+header
+{
+    background-image: url("../img/design/ciel-bleu.jpg");
+    background-size: 100% 140px;
+
+    position: relative;
+    height: 140px;
+}
+#header
+{
+    width:1024px;
+
+    position: relative;
+    left:50%;
+    margin-left:-512px;
+}
+
+#wrap
+{
+    min-height:100%;
+}
+
+footer
+{
+    position: relative; 
+    bottom: 0; 
+    left: 0; 
+    right:0;
+
+    height: 100px; /* à titre d'exemple */
+    text-align: center;
+    margin-top: 50px;
+
+    background-image: url("../img/design/ciel-bleu.jpg");
+    background-size: 100% 140px;
+
+    background-color: rgb(61,108,164);
+}
+
+nav
+{
+    position: relative;
+    margin-bottom:30px;
+}
+
+#menu_mobile
+{
+    display:none;
+}
+#menu
+{
+    width:100%;
+    min-width: 1100px;
+    /*background-color:#dbdbdb;*/
+    text-align: center;
+
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#menu a
+{
+    display: inline-block;
+    margin:0px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+    overflow: hidden;
+    cursor: pointer;
+
+    padding-top:15px;
+    /*width:146px;*/
+    width:14%;
+    height:50px;
+    color:#FFF;
+}
+#menu a:hover
+{
+    font-size: 1.1em;
+    text-decoration:none; 
+}
+
+.menu_0
+{
+    background-color: #1A1A59;
+}
+.menu_1
+{
+    background-color: #FFA100;
+}
+.menu_2
+{
+    background-color: #BA0B0B;
+}
+.menu_3
+{
+    background-color: #6E8F08;
+}
+.menu_4
+{
+    background-color: #2E9C9C;
+}
+.menu_5
+{
+    background-color: #77D5D5;
+}
+.menu_6
+{
+    background-color: #FF7400;
+}
+
+
+.menu_panel
+{
+    position: relative;
+    top:-5px;
+
+    background-color: white;
+    width:100%;
+
+    border:1px solid #000;
+    border-left:none;
+    border-right:none;
+    border-top:none;
+
+    display:none;
+    box-shadow: -1px 5px 5px 1px rgba(0, 0, 0, 0.7); 
+    overflow: hidden;
+    height: 300px;
+}
