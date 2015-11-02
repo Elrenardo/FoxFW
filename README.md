@@ -17,12 +17,17 @@ Il utilise les librairies suivantes:
 
 1. Copier les fichiers dans le répértoir de votre serveur.
 2. Ouvrer le fichier "_vendor/foxFW/config.json"
-3. Trouver le paramettre "BasePath" dans "AltoRouter".Modifier le chemain path celons votre arborescence. ( si sur serveur: "BasePath":"" )
+3. Trouver le paramettre "BasePath" dans "AltoRouter". Modifier le chemain path celons votre arborescence. ( si sur serveur: "BasePath":"" )
 4. Configurer l'accés de la base de donner dans "RedBean"
 5. Aller sur le site est créer un nouvel utilisateur "127.0.0.1/user/login" ( RedBean créera les tables automatiquent )
-6. Dans PhpMyAdmin, trouver "foxfwusers" et dans votre compte changer les roles à "ANONYME|MEMBRE|ADMIN|PAGE|CONFIG|USERS_PERMISSION|DOCUMENT|CALENDRIER" pour avoir tous les droits de modification.
+6. Dans PhpMyAdmin, trouver "foxfwusers" et dans votre compte changer les roles à "ANONYME|MEMBRE|ADMIN|USERS_PERMISSION" pour les autorisations d'admin. Les autres autorisations pourrons être ajouter via le panel admin pour accéder au autre bundle.
 
 
 # Créer un Bundle
+
+//TODO
+
+
+# Bundle disponible
 
 //TODO

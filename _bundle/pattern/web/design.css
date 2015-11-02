@@ -36,7 +36,7 @@ legend
 }
 header
 {
-    background-image: url("../img/design/ciel-bleu.jpg");
+    background-color: #A70000;
     background-size: 100% 140px;
 
     position: relative;
@@ -67,10 +67,8 @@ footer
     text-align: center;
     margin-top: 50px;
 
-    background-image: url("../img/design/ciel-bleu.jpg");
+    background-color: #A70000;
     background-size: 100% 140px;
-
-    background-color: rgb(61,108,164);
 }
 
 nav

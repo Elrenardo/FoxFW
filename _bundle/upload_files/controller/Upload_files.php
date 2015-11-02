@@ -2,9 +2,9 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 24/09/2015
+Update  : 02/11/2015
 Licence : © Copyright
-Version : 1.0
+Version : 1.1
 -------------------------
 */
 /*
@@ -19,6 +19,7 @@ Upload_files::add()
 Upload_files::deplacer( $new_rep )
 Upload_files::removeFileBuffer( $params )
 Upload_files::getFilesDir( $path )
+Upload_files::getUrlBuffer()
 
 
 */
@@ -44,7 +45,7 @@ class Upload_files
 	//Affiche le systéme d'upload 
 	public static function view()
 	{
-		$path = $GLOBALS['Config']['Upload_files']['path_buffer'].$GLOBALS['User']->getId().'/';
+		$path = Upload_files::getUrlBuffer();
 
 		//lister repertoire
 		$files = Upload_files::getFilesDir( $path );
@@ -62,7 +63,7 @@ class Upload_files
 	//Affiche le systéme d'upload 
 	public static function viewEdit( $path_dir )
 	{
-		$path = $GLOBALS['Config']['Upload_files']['path_buffer'].$GLOBALS['User']->getId().'/';
+		$path = Upload_files::getUrlBuffer();
 
 		//verifier si le repertoire existe sinon ont le creer
 		if( !file_exists( $path ) )
@@ -87,7 +88,7 @@ class Upload_files
 	//Fonction a appelé pour uploadé de nouveaux fichier
 	public static function add( $params )
 	{
-		$path = $GLOBALS['Config']['Upload_files']['path_buffer'].$GLOBALS['User']->getId().'/';
+		$path = Upload_files::getUrlBuffer();
 		
 		if( !file_exists( $path ))
 			mkdir( $path, 0755, true );
@@ -110,7 +111,7 @@ class Upload_files
 			mkdir( $new_rep, 0755, true );
 
 		//deplacer fichier
-		$path = $GLOBALS['Config']['Upload_files']['path_buffer'].$GLOBALS['User']->getId().'/';
+		$path = Upload_files::getUrlBuffer();
 		$files  = Upload_files::getFilesDir( $path );
 		foreach ($files as $key => $value)
 		{
@@ -131,7 +132,7 @@ class Upload_files
 	//deplace les fichier en attante dans leurs nouveaux repertoire
 	public static function removeFileBuffer( $params )
 	{
-		$path = $GLOBALS['Config']['Upload_files']['path_buffer'].$GLOBALS['User']->getId().'/'.urldecode($params['id']);
+		$path = Upload_files::getUrlBuffer().urldecode($params['id']);
 		unlink( $path );
 		return '';
 	}
@@ -175,5 +176,17 @@ class Upload_files
 			return array();
 
 		return $files;
+	}
+
+
+	//--------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------
+	//
+	//
+	//
+	//--------------------------------------------------------------------------------
+	public static function getUrlBuffer()
+	{
+		return _WEB.$GLOBALS['Config']['Upload_files']['path_buffer'].$GLOBALS['User']->getId().'/';
 	}
 };

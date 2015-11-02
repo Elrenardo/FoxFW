@@ -7,9 +7,9 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 15/10/2015
+Update  : 02/11/2015
 Licence : © Copyright
-Version : 3.12
+Version : 3.13
 -------------------------
 */
 
@@ -28,6 +28,7 @@ Version : 3.12
 	FoxFWKernel::router( $id, $add = '' );
 	FoxFWKernel::loadRouter( $id, $add = '');
 	FoxFWKernel::path( $url );
+	FoxFWKernel::bundlePath( $path = '' );
 
 //Gestion document:
 	FoxFWKernel::URLencode($str, $charset='utf-8');
@@ -359,6 +360,21 @@ class FoxFWKernel
 	public static function loadRouter( $id, $add = '')
 	{
 		header('Location: '.FoxFWKernel::router($id, $add) );
+	}
+
+	//--------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------
+	//
+	// 
+	// $path = bundle#fichier
+	//--------------------------------------------------------------------------------
+	public static function bundlePath( $path = '' )
+	{
+		$tab = explode('#', $path);
+		if( empty($tab[1]) )
+			return '#';
+
+	    return FoxFWKernel::path( _BUNDLE.$tab[0].'/web/'.$tab[1] );
 	}
 
 	//--------------------------------------------------------------------------------

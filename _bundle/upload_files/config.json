@@ -6,6 +6,6 @@
 
 	"Upload_files":
 	{
-		"path_buffer":"web/buffer/"
+		"path_buffer":"buffer/"
 	}
 }

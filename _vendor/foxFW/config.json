@@ -26,7 +26,7 @@
 
 	"AltoRouter":
 	{
-		"BasePath"  : "FoxFW/"
+		"BasePath"  : "git/FoxFW/"
 	},
 
 	"FoxFW":

@@ -16,6 +16,9 @@ class Controller_page
     {
     	FoxFWKernel::addVendor('foxFW/FoxFWPage.php');
     	$this->page = new FoxFWPage();
+
+    	if( !file_exists( _WEB.'/page '))
+    		mkdir( _WEB.'/page', 0755, true);
     }
 
     //--------------------------------------------------------------------------------
@@ -82,7 +85,7 @@ class Controller_page
 		//Ajout des documents de upload_files
 
 		FoxFWKernel::addController('Upload_files');
-		Upload_files::deplacer('./web/page/'.$id_url );
+		Upload_files::deplacer( _WEB.'page/'.$id_url );
 
 		//envoyer a la page
 		FoxFWKernel::loadRouter('Page_viewPage',$id_url );
@@ -126,7 +129,7 @@ class Controller_page
 
 		//Ajout des documents de upload_files
 		FoxFWKernel::addController('Upload_files');
-		Upload_files::deplacer('./web/page/'.$id_url );
+		Upload_files::deplacer( _WEB.'page/'.$id_url );
 
 		//router vers page
 		FoxFWKernel::loadRouter('Page_viewPage',$id_url );
@@ -144,7 +147,7 @@ class Controller_page
 		$id_url = $this->page->remove( $params['id'] );
 
 		//supprimer fichier image attacher
-		FoxFWFile::delTree( 'web/page/'.$id_url );
+		FoxFWFile::delTree( _WEB.'page/'.$id_url );
 
 		//routage sur la liste des pages
 		FoxFWKernel::loadRouter('Page_viewListeAllPage');
@@ -169,7 +172,6 @@ class Controller_page
 			FoxFWKernel::loadrouter('index');
 		
 		$liste = $this->page->search( $search );
-		//return $GLOBALS['Twig']->render('./pages/listePage.html.twig', array('titre'=>'Recherche de "'.$id.'"','liste'=>$liste));
 		return $GLOBALS['Twig']->render( FoxFWKernel::getView('pages_listePageGraphique'), array('titre'=>'Recherche de "'.$search.'"','liste'=>$liste));
 	}
 
@@ -188,7 +190,7 @@ class Controller_page
 
 		//renvoyé les images attaché a cette page
 		FoxFWKernel::addController('Upload_files');
-		$files = Upload_files::getFilesDir('./web/page/'.$id.'/' );
+		$files = Upload_files::getFilesDir( _WEB.'page/'.$id.'/' );
 
 		//rendu
 		return $GLOBALS['Twig']->render( $data['twig'], array(
