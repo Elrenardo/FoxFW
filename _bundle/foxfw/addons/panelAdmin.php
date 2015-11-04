@@ -69,5 +69,5 @@ function()
 	}
 
 	//compilation de la vue
-	return $GLOBALS['Twig']->render( FoxFWKernel::getView( $GLOBALS['Config']['PanelAdmin']['render'] ) ,array('menu'=>$menu ));
+	return $GLOBALS['Twig']->render( $GLOBALS['Config']['PanelAdmin']['render'] ,array('menu'=>$menu ));
 },array('is_safe' => array('html')) ));

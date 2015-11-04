@@ -7,20 +7,21 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 03/11/2015
+Update  : 02/11/2015
 Licence : © Copyright
-Version : 3.50
+Version : 3.13
 -------------------------
 */
 
 /*
 //Kernel:
-	FoxFWKernel::build( $config_url );
+	FoxFWKernel::build( $racine, $config_url );
 	FoxFWKernel::controller( $method, $params );
 	FoxFWKernel::addVendor( $file );
 	FoxFWKernel::addModel( $name );
 	FoxFWKernel::addBundleFile( $file );
 	FoxFWKernel::addFile( $file );
+	FoxFWKernel::writelog( $message );
 	FoxFWKernel::merge_object( $obj, $obj_add );
 
 //Routage URL:
@@ -37,7 +38,7 @@ Version : 3.50
 	FoxFWKernel::debug( $var );
 	FoxFWKernel::scriptTimeStart();
 	FoxFWKernel::scriptTimeStop();
-	FoxFWKernel::writelog( $message );
+	FoxFWKernel::log( $msg );
 */
 
 
@@ -50,20 +51,23 @@ class FoxFWKernel
 	//
 	//
 	//--------------------------------------------------------------------------------
-	public static function build( $config_url )
+	public static function build( $racine, $config_url )
 	{
 		//Début session
 		@session_start();
+
+		//define racine
+		define( '_RACINE', $racine);
 
 		//security
 		FoxFWKernel::security();
 
 		//Chargement de la configuration
-		$GLOBALS['Config'] = FoxFWKernel::buildConfiguration( $config_url );
+		$GLOBALS['Config'] = FoxFWKernel::buildConfiguration( $racine.$config_url );
 		
 		//verifier la syntaxe JSON
 		if( $GLOBALS['Config'] == NULL )
-			die( $config_url.': syntaxe error !');
+			die( $racine.'/'.$config_url.': syntaxe error !');
 
 		//activier ou pas les erreurs PHP
 		if( !$GLOBALS['Config']['FoxFW']['php_error'] )
@@ -72,7 +76,7 @@ class FoxFWKernel
 		//-------------------------------------------------------------
 		//Default constante
 		foreach ($GLOBALS['Config']['Define'] as $key => $value)
-			define( $key , $value);
+			define( $key , $racine.'/'.$value);
 
 		//Dépendences
 		foreach ($GLOBALS['Config']['Require'] as $key => $value)
@@ -122,7 +126,7 @@ class FoxFWKernel
 
 		Twig_Autoloader::register();
 
-		$loader          = new \Twig_Loader_Filesystem('./');
+		$loader          = new \Twig_Loader_Filesystem( _BUNDLE );
 		$GLOBALS['Twig'] = new \Twig_Environment($loader, array( 'cache' => $cache ));
 
 		//twig extension function User !
@@ -394,67 +398,51 @@ class FoxFWKernel
 	//--------------------------------------------------------------------------------
 	public static function addVendor( $file )
 	{
-		return FoxFWKernel::addFile( _VENDOR.$file );
+		$file = _VENDOR.$file;
+		if( file_exists( $file ))
+			require_once $file;
 	}
 	
-	//--------------------------------------------------------------------------------
-	//--------------------------------------------------------------------------------
-	//
-	//
-	//
-	//--------------------------------------------------------------------------------
 	public static function addModel( $name )
 	{
 		if( !class_exists( $name ))
 		{
 			$path = $GLOBALS['Config']['Model'][ $name ];
-			return FoxFWKernel::addFile( $path );
+			if( file_exists( $path ))
+			{
+				require_once $path;
+				return true;
+			}
 		}
 		return false;
 	}
 	
-	//--------------------------------------------------------------------------------
-	//--------------------------------------------------------------------------------
-	//
-	//
-	//
-	//--------------------------------------------------------------------------------
 	public static function addController( $controller )
 	{
 		if( !class_exists( $controller ))
 		{
 			$path = $GLOBALS['Config']['Controller'][ $controller ];
-			return FoxFWKernel::addFile( $path );
+			if( file_exists( $path ))
+			{
+				require_once $path;
+				return true;
+			}
 		}
 		return false;
 	}
 	
-	//--------------------------------------------------------------------------------
-	//--------------------------------------------------------------------------------
-	//
-	//
-	//
-	//--------------------------------------------------------------------------------
 	public static function addBundleFile( $file )
 	{
-		return FoxFWKernel::addFile( _BUNDLE.$file );
+		$file = _BUNDLE.$file;
+		if( file_exists( $file ))
+			require_once $file;
 	}
 
-	//--------------------------------------------------------------------------------
-	//--------------------------------------------------------------------------------
-	//
-	//
-	//
-	//--------------------------------------------------------------------------------
 	public static function addFile( $file )
 	{
 		$file = $file;
 		if( file_exists( $file ))
-		{
 			require_once $file;
-			return true;
-		}
-		return false;
 	}
 
 	//--------------------------------------------------------------------------------
@@ -468,6 +456,20 @@ class FoxFWKernel
 		if( isset( $GLOBALS['Config']['View'][ $name ] ))
 			return $GLOBALS['Config']['View'][ $name ];
 		return $GLOBALS['Config']['FoxFW']['view_error'];
+	}
+
+
+	//--------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------
+	//
+	//
+	//
+	//--------------------------------------------------------------------------------
+	//ecriture de log
+    public static function writelog( $message )
+	{
+		$message = '['.date('Y-m-d H:i:s').'] ('.$_SERVER["REMOTE_ADDR"].') =>'.$message."\r\n";
+		file_put_contents( 'log.txt',$message,FILE_APPEND);
 	}
 
 	//--------------------------------------------------------------------------------
@@ -531,16 +533,13 @@ class FoxFWKernel
 		//-------------------------------------------------------
 		//preparation structure
 		if( !isset($config['Bundle']))
-			$config['Bundle'] = [];
+			$config['Bundle'] = array();
 
 		if( !isset($config['Controller']))
-			$config['Controller'] = [];
+			$config['Controller'] = array();
 
 		if( !isset($config['Model']))
-			$config['Model'] = [];
-
-		if( !isset($config['View']))
-			$config['View'] = [];
+			$config['Model'] = array();
 
 		//-------------------------------------------------------
 
@@ -564,36 +563,56 @@ class FoxFWKernel
 			}
 		}
 
-		//recupére les paths des fichiers ce trouvant dans le dossier
-		$searchAddFile = function( $dossier )
-		{
-			$ret = [];
-			//Detections des objects
-			if(file_exists($dossier))
-			{
-				$scan = scandir( $dossier );
-				foreach ($scan as $key2 => $value2)
-				if( $value2 != '.' )
-				if( $value2 != '..' )
-				{
-					$tab = explode('.',$value2);
-
-					$ret[ $tab[0] ] = $dossier.$value2;
-				}
-			}
-			return $ret;
-		};
 
 		//-------------------------------------------------------
 		foreach ($config['Bundle'] as $key => $value)
 		{
 			//Detections des controllers
-			$config['Controller'] += $searchAddFile( $value.'controller/' );
+			$file = $value.'controller/';
+			if(file_exists($file))
+			{
+				$dossier = scandir( $file );
+				foreach ($dossier as $key2 => $value2)
+				if( $value2 != '.' )
+				if( $value2 != '..' )
+				{
+					$tab = explode('.',$value2);
+
+					$config['Controller'][ $tab[0] ] = $file.$value2;
+				}
+			}
+
 			//Detection des models
-			$config['Model'] += $searchAddFile( $value.'model/' );
+			$file = $value.'model/';
+			if(file_exists($file))
+			{
+				$dossier = scandir( $file );
+				foreach ($dossier as $key2 => $value2)
+				if( $value2 != '.' )
+				if( $value2 != '..' )
+				{
+					$tab = explode('.',$value2);
+
+					$config['Model'][ $tab[0] ] = $file.$value2;
+				}
+			}
+
 			//Detection des view
-			$config['View'] += $searchAddFile( $value.'view/' );
+			$file = $value.'/view/';
+			if(file_exists($file))
+			{
+				$dossier = scandir( $file );
+				foreach ($dossier as $key2 => $value2)
+				if( $value2 != '.' )
+				if( $value2 != '..' )
+				{
+					$tab = explode('.',$value2);
+
+					$config['View'][ $tab[0] ] = $key.'/view/'.$value2;
+				}
+			}
 		}
+
 
 		//-------------------------------------------------------
 		//compilation de la config si cache ON
@@ -680,12 +699,11 @@ class FoxFWKernel
 	//
 	//
 	//--------------------------------------------------------------------------------
-	public static function writelog( $msg )
+	public static function log( $msg )
 	{
 		if( isset($GLOBALS['Config']['FoxFW']['log_output']))
 			return;
-
 		$file = $GLOBALS['Config']['FoxFW']['log_output'];
-		file_put_contents( $file, ('['.date("Y-m-d H:i:s").'] =>'.$msg.'\n'), FILE_APPEND );
+		file_put_contents( $file, ('['.date("Y-m-d H:i:s").'] '.$msg.'\n'), FILE_APPEND );
 	}
 };

@@ -2,9 +2,9 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 04/11/2015
+Update  : 24/09/2015
 Licence : © Copyright
-Version : 1.2
+Version : 1.0
 -------------------------
 */
 class Controller_document
@@ -22,11 +22,7 @@ class Controller_document
     	if( !isset( $_SESSION['foxfw_document_path'] ))
     		$_SESSION['foxfw_document_path'] = '';
 
-    	FoxFWKernel::addVendor('foxFW/FoxFWUrl.php');
 		$this->path = new FoxFWUrl( 'web/document/', $_SESSION['foxfw_document_path'] );
-
-		if( !file_exists( _WEB.'document'))
-			mkdir( _WEB.'document', 0755, true );
     }
 
     //--------------------------------------------------------------------------------

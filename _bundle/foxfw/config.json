@@ -18,7 +18,7 @@
 	{
 		"cache"  : "panelAdmin.html",
 		"method" : "viewPanelAdmin",
-		"render" : "foxfw_pattern_panelAdmin"
+		"render" : "foxfw/view/foxfw_pattern_panelAdmin.html.twig"
 	},
 
 	"Roles":
