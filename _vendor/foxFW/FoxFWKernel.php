@@ -7,9 +7,9 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 03/11/2015
+Update  : 04/11/2015
 Licence : © Copyright
-Version : 3.50
+Version : 3.51
 -------------------------
 */
 
@@ -524,23 +524,16 @@ class FoxFWKernel
 			return json_decode( file_get_contents( $cache ),true);
 
 		//chargement configuration basique
-		$config = json_decode( file_get_contents( $config_start ),true );
+		$config = json_decode( file_get_contents( $config_start ),true);
 		if( $config == NULL )
 			exit('Config .json error !');
 
 		//-------------------------------------------------------
 		//preparation structure
-		if( !isset($config['Bundle']))
-			$config['Bundle'] = [];
-
-		if( !isset($config['Controller']))
-			$config['Controller'] = [];
-
-		if( !isset($config['Model']))
-			$config['Model'] = [];
-
-		if( !isset($config['View']))
-			$config['View'] = [];
+		$config['Bundle']     = [];
+		$config['Controller'] = [];
+		$config['Model']      = [];
+		$config['View']       = [];
 
 		//-------------------------------------------------------
 
@@ -585,6 +578,7 @@ class FoxFWKernel
 		};
 
 		//-------------------------------------------------------
+		//chargement controller / model / view
 		foreach ($config['Bundle'] as $key => $value)
 		{
 			//Detections des controllers
@@ -593,7 +587,15 @@ class FoxFWKernel
 			$config['Model'] += $searchAddFile( $value.'model/' );
 			//Detection des view
 			$config['View'] += $searchAddFile( $value.'view/' );
+
 		}
+		//-------------------------------------------------------
+		//Ecrassement des view surcharge par le bundle design
+		$path = $config['Define']['_BUNDLE'].$config['FoxFW']['bundle_design'];
+		
+		$tab = $searchAddFile( $path ); //Marche pas: $config['View'] += $searchAddFile( $path );
+		foreach ($tab as $key => $value)
+			$config['View'][ $key ] = $value;
 
 		//-------------------------------------------------------
 		//compilation de la config si cache ON
