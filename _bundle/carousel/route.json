@@ -1,0 +1,25 @@
+{
+	"carousel_view":
+	{
+		"path"       : "viewCarousel",
+		"method"     : "GET",
+		"controller" : "Controller_carousel#view",
+		"firewall"   : "ANONYME"
+	},
+
+	"carousel_gestion":
+	{
+		"path"       : "editCarousel",
+		"method"     : "GET",
+		"controller" : "Controller_carousel#edit",
+		"firewall"   : "ADMIN"
+	},
+
+	"carousel_add":
+	{
+		"path"       : "addCarousel",
+		"method"     : "GET",
+		"controller" : "Controller_carousel#add",
+		"firewall"   : "ADMIN"
+	}
+}

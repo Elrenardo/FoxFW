@@ -14,4 +14,4 @@ Version : 1.0
 //FoxFWKernel::scriptTimeStop();
 
 require_once './_vendor/foxFW/FoxFWKernel.php';
-FoxFWKernel::build( './', '_vendor/foxFW/config.json' );
+FoxFWKernel::build( '_vendor/foxFW/config.json' );
