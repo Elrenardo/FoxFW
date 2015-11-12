@@ -20,7 +20,7 @@ Il utilise les librairies suivantes:
 3. Trouver le paramettre "BasePath" dans "AltoRouter". Modifier le chemain path celons votre arborescence. ( si sur serveur: "BasePath":"" )
 4. Configurer l'accés de la base de donner dans "RedBean"
 5. Aller sur le site est créer un nouvel utilisateur "127.0.0.1/user/login" ( RedBean créera les tables automatiquent )
-6. Dans PhpMyAdmin, trouver "foxfwusers" et dans votre compte changer les roles à "ANONYME|MEMBRE|ADMIN|USERS_PERMISSION" pour les autorisations d'admin. Les autres autorisations pourrons être ajouter via le panel admin pour accéder au autre bundle.
+6. Dans PhpMyAdmin, trouver "foxfwusers" et dans votre compte changer les roles à "ANONYME|MEMBRE|ADMIN|USERS_PERMISSION|CONFIG" pour les autorisations d'admin. Les autres autorisations pourrons être ajouter via le panel admin pour accéder au autre bundle.
 
 
 # Créer un Bundle
