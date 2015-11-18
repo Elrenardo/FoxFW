@@ -23,7 +23,8 @@
 
 	"Roles":
 	{
-		"CONFIG":"CONFIG"
+		"CONFIG":"CONFIG",
+		"ADMIN":"ADMIN"
 	},
 
 	"FoxFW":
