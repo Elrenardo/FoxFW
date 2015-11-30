@@ -12,7 +12,7 @@
 		"path"       : "pageGestion/listePage",
 		"method"     : "GET",
 		"controller" : "Controller_page#viewlistePage",
-		"firewall"   : "PAGE"
+		"firewall"   : "ADMIN"
 	},
 
 	"Page_viewListePage":
@@ -20,7 +20,7 @@
 		"path"       : "pageGestion/listePage/[**:id]",
 		"method"     : "GET",
 		"controller" : "Controller_page#viewlistePage",
-		"firewall"   : "PAGE"
+		"firewall"   : "ADMIN"
 	},
 
 	"Page_searchPage":
@@ -43,7 +43,7 @@
 		"path"       : "pageGestion/addPage",
 		"method"     : "GET",
 		"controller" : "Controller_page#viewAddPage",
-		"firewall"   : "PAGE"
+		"firewall"   : "ADMIN"
 	},
 
 	"Page_addArticle":
@@ -51,7 +51,7 @@
 		"path"       : "pageGestion/addPage/1",
 		"method"     : "GET",
 		"controller" : "Controller_page#viewAddArticle",
-		"firewall"   : "PAGE"
+		"firewall"   : "ADMIN"
 	},
 
 	"Page_confirmaddPage":
@@ -59,7 +59,7 @@
 		"path"       : "pageGestion/confirmaddPage",
 		"method"     : "POST",
 		"controller" : "Controller_page#confirmAddPage",
-		"firewall"   : "PAGE"
+		"firewall"   : "ADMIN"
 	},
 
 	"Page_viewUpdatePage":
@@ -67,7 +67,7 @@
 		"path"       : "pageGestion/updatePage/[i:id]",
 		"method"     : "GET",
 		"controller" : "Controller_page#viewUpdatePage",
-		"firewall"   : "PAGE"
+		"firewall"   : "ADMIN"
 	},
 
 	"Page_confirmUpdatePage":
@@ -75,7 +75,7 @@
 		"path"       : "pageGestion/confirmupdatePage",
 		"method"     : "POST",
 		"controller" : "Controller_page#confirmEditPage",
-		"firewall"   : "PAGE"
+		"firewall"   : "ADMIN"
 	},
 
 	"Page_removePage":
@@ -83,6 +83,6 @@
 		"path"       : "pageGestion/removePage/[i:id]",
 		"method"     : "GET",
 		"controller" : "Controller_page#removePage",
-		"firewall"   : "PAGE"
+		"firewall"   : "ADMIN"
 	}
 }

@@ -47,14 +47,14 @@
 		"path"       : "calendrier/addEvent",
 		"method"     : "GET",
 		"controller" : "Controller_calendrier#addEvenement",
-		"firewall"   : "CALENDRIER"
+		"firewall"   : "ADMIN"
 	},
 	"calendrier_confirmAddEvent":
 	{
 		"path"       : "calendrier/confirm_addEvent",
 		"method"     : "POST",
 		"controller" : "Controller_calendrier#confirmAddEvenement",
-		"firewall"   : "CALENDRIER"
+		"firewall"   : "ADMIN"
 	},
 
 	"calendrier_removeEvent":
@@ -62,7 +62,7 @@
 		"path"       : "calendrier/removeEvent/[**:id]",
 		"method"     : "GET",
 		"controller" : "Controller_calendrier#removeEvenement",
-		"firewall"   : "CALENDRIER"
+		"firewall"   : "ADMIN"
 	},
 
 	"calendrier_editEvent":
@@ -70,13 +70,13 @@
 		"path"       : "calendrier/editEvent/[**:id]",
 		"method"     : "GET",
 		"controller" : "Controller_calendrier#editEvenement",
-		"firewall"   : "CALENDRIER"
+		"firewall"   : "ADMIN"
 	},
 	"calendrier_confirmEditEvent":
 	{
 		"path"       : "calendrier/confirmEditEvent",
 		"method"     : "POST",
 		"controller" : "Controller_calendrier#confirmEditEvenement",
-		"firewall"   : "CALENDRIER"
+		"firewall"   : "ADMIN"
 	}
 }

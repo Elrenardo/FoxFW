@@ -2,9 +2,5 @@
 	"Route":
 	{
 		"pages" : "pages/route.json"
-	},
-	"Roles":
-	{
-		"PAGE":"PAGE"
 	}
 }
