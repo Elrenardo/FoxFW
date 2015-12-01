@@ -2,9 +2,9 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 24/09/2015
+Update  : 01/12/2015
 Licence : © Copyright
-Version : 1.0
+Version : 1.1
 -------------------------
 */
 class FoxFWFile
@@ -107,13 +107,12 @@ class FoxFWFile
 	//--------------------------------------------------------------------------------
 	public static function encodeString($str, $charset='utf-8')
 	{
-	    $str = htmlentities($str, ENT_NOQUOTES, $charset);
-	    
-	    $str = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str);
-	    $str = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $str); // pour les ligatures e.g. '&oelig;'
-	    $str = preg_replace('#&[^;]+;#', '', $str); // supprime les autres caractères
-	    
-	    return strtr($str,' :;!,?#+','--------');
+	     $string = strtolower(htmlentities($sString, ENT_NOQUOTES, $charset ));
+	     $string = preg_replace("/&(.)(uml);/", "$1e", $string);
+	     $string = preg_replace("/&(.)(acute|cedil|circ|ring|tilde|uml);/", "$1", $string);
+	     $string = preg_replace("/([^a-z0-9]+)/", "-", html_entity_decode($string));
+	     $string = trim($string, "-");
+	     return $string;
 	}
 
     //--------------------------------------------------------------------------------
