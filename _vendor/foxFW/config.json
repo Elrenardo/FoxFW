@@ -10,7 +10,7 @@
 	"Require":
 	{
 		"AltoRouter" : "altorouter/AltoRouter.php",
-		"Twig"       : "twig/Autoloader.php",
+		"Twig"       : "Twig/Autoloader.php",
 		"RedBean"    : "RedBeanPHP4.2.3/rb.php",
 		"FoxFwFile"  : "foxFW/FoxFWFile.php",
 		"FoxFWCrypte": "foxFW/FoxFWCrypte.php",
