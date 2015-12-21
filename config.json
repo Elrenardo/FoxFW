@@ -27,15 +27,5 @@
 	"AltoRouter":
 	{
 		"BasePath"  : "git/FoxFW/"
-	},
-
-	"FoxFW":
-	{
-		"bundle_design"    : "foxfw/viewFirst/",
-		"controller_error" : "Controller_error",
-		"view_error"       : "foxfw/view/foxfw_viewError.html.twig",
-		"log_output"       : "log.txt",
-		"php_error"        : true,
-		"cache"            : false
 	}
 }

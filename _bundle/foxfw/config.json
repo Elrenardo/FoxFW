@@ -1,8 +1,4 @@
 {
-	"Model":
-	{
-	},
-
 	"Addon":
 	{
 		"addon"    : "foxfw/addons/panelAdmin.php",
@@ -24,11 +20,17 @@
 	"Roles":
 	{
 		"CONFIG":"CONFIG",
-		"ADMIN":"ADMIN"
+		"ADMIN" :"ADMIN"
 	},
 
 	"FoxFW":
 	{
-		"email" : "contact@helloWorld.fr"
+		"email"            : "contact@helloWorld.fr",
+		"bundle_design"    : "foxfw/viewFirst/",
+		"controller_error" : "Controller_error",
+		"view_error"       : "foxfw/view/foxfw_viewError.html.twig",
+		"log_output"       : "log.txt",
+		"php_error"        : true,
+		"cache"            : false
 	}
 }

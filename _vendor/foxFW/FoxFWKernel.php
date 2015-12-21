@@ -1,15 +1,15 @@
 <?php
 /*
 	::FoxFWKernel::
-	V3.12
+	V3.52
 */
 
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 04/11/2015
+Update  : 21/12/2015
 Licence : © Copyright
-Version : 3.51
+Version : 3.52
 -------------------------
 */
 
@@ -50,7 +50,7 @@ class FoxFWKernel
 	//
 	//
 	//--------------------------------------------------------------------------------
-	public static function build( $config_url )
+	public static function build( $config_url, $cache_config )
 	{
 		//Début session
 		@session_start();
@@ -59,7 +59,7 @@ class FoxFWKernel
 		FoxFWKernel::security();
 
 		//Chargement de la configuration
-		$GLOBALS['Config'] = FoxFWKernel::buildConfiguration( $config_url );
+		$GLOBALS['Config'] = FoxFWKernel::buildConfiguration( $config_url, $cache_config );
 		
 		//verifier la syntaxe JSON
 		if( $GLOBALS['Config'] == NULL )
@@ -516,12 +516,11 @@ class FoxFWKernel
 	//
 	//
 	//--------------------------------------------------------------------------------
-	private static function buildConfiguration( $config_start )
+	private static function buildConfiguration( $config_start, $cache_config )
 	{
 		//Verifier si une compilation de la configuratino existe déja
-		$cache = '_cache/config.json';
-		if( file_exists( $cache ) )
-			return json_decode( file_get_contents( $cache ),true);
+		if( file_exists( $cache_config ) )
+			return json_decode( file_get_contents( $cache_config ),true);
 
 		//chargement configuration basique
 		$config = json_decode( file_get_contents( $config_start ),true);
@@ -530,7 +529,6 @@ class FoxFWKernel
 
 		//-------------------------------------------------------
 		//preparation structure
-		$config['Bundle']     = [];
 		$config['Controller'] = [];
 		$config['Model']      = [];
 		$config['View']       = [];
@@ -538,22 +536,26 @@ class FoxFWKernel
 		//-------------------------------------------------------
 
 		//recherche configuration des bundles
-		$bundle_url = $config['Define']['_BUNDLE'];
-
-		$bundle = scandir( $bundle_url );
-		//création de la configuration
-		foreach ($bundle as $key => $value)
-		if( $value != '.' )
-		if( $value != '..' )
+		if( !isset($config['Bundle']))
 		{
-			$config['Bundle'][ $value ] = $bundle_url.$value.'/';
+			$config['Bundle'] = [];
+			$bundle_url       = $config['Define']['_BUNDLE'];
 
-			$file = $bundle_url.$value.'/config.json';
-			if( file_exists( $file ) )
+			$bundle = scandir( $bundle_url );
+			//création de la configuration
+			foreach ($bundle as $key => $value)
+			if( $value != '.' )
+			if( $value != '..' )
 			{
-				//chargement et fusion de la configuration
-				$data   = json_decode( file_get_contents( $file ),true);
-				$config = FoxFWKernel::merge_object( $config, $data );
+				$config['Bundle'][ $value ] = $bundle_url.$value.'/';
+
+				$file = $bundle_url.$value.'/config.json';
+				if( file_exists( $file ) )
+				{
+					//chargement et fusion de la configuration
+					$data   = json_decode( file_get_contents( $file ),true);
+					$config = FoxFWKernel::merge_object( $config, $data );
+				}
 			}
 		}
 
@@ -584,13 +586,13 @@ class FoxFWKernel
 			//Detections des controllers
 			$config['Controller'] += $searchAddFile( $value.'controller/' );
 			//Detection des models
-			$config['Model'] += $searchAddFile( $value.'model/' );
+			$config['Model']      += $searchAddFile( $value.'model/' );
 			//Detection des view
-			$config['View'] += $searchAddFile( $value.'view/' );
-
+			$config['View']       += $searchAddFile( $value.'view/' );
 		}
 		//-------------------------------------------------------
 		//Ecrassement des view surcharge par le bundle design
+		if( !isset($config['FoxFW']['bundle_design'])) exit('config:foxfw:bundle_design lost');
 		$path = $config['Define']['_BUNDLE'].$config['FoxFW']['bundle_design'];
 		
 		$tab = $searchAddFile( $path ); //Marche pas: $config['View'] += $searchAddFile( $path );
