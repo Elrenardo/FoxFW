@@ -21,7 +21,7 @@
 	{
 		"connect" : "mysql:host=localhost;dbname=foxfw",
 		"user"    : "root",
-		"pass"    : ""
+		"pass"    : "root"
 	},
 
 	"AltoRouter":

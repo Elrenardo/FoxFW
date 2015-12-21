@@ -17,7 +17,7 @@ class Controller_page
     	FoxFWKernel::addVendor('foxFW/FoxFWPage.php');
     	$this->page = new FoxFWPage();
 
-    	if( !file_exists( _WEB.'/page '))
+    	if( !is_dir( _WEB.'/page' ))
     		mkdir( _WEB.'/page', 0755, true);
     }
 

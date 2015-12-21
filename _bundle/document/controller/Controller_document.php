@@ -25,7 +25,7 @@ class Controller_document
     	FoxFWKernel::addVendor('foxFW/FoxFWUrl.php');
 		$this->path = new FoxFWUrl( 'web/document/', $_SESSION['foxfw_document_path'] );
 
-		if( !file_exists( _WEB.'document'))
+		if( !is_dir( _WEB.'document'))
 			mkdir( _WEB.'document', 0755, true );
     }
 

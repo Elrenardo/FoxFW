@@ -18,7 +18,7 @@ class Controller_carousel
 	public function __construct() 
     {
     	$path = Controller_carousel::getPathCarousel();
-    	if( !file_exists( $path ))
+    	if( !is_dir( $path ))
     		mkdir('web/carousel', 0777, true );
     }
 

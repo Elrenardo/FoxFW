@@ -66,7 +66,7 @@ class Upload_files
 		$path = Upload_files::getUrlBuffer();
 
 		//verifier si le repertoire existe sinon ont le creer
-		if( !file_exists( $path ) )
+		if( !is_dir( $path ) )
 			mkdir( $path, 0755, true);
 
 		//lister repertoire
@@ -90,7 +90,7 @@ class Upload_files
 	{
 		$path = Upload_files::getUrlBuffer();
 		
-		if( !file_exists( $path ))
+		if( !is_dir( $path ))
 			mkdir( $path, 0755, true );
 
 		FoxFWFile::uploadFile( $path );
@@ -107,7 +107,7 @@ class Upload_files
 	public static function deplacer( $new_rep )
 	{
 		//verifier si le repertoire de destination existe
-		if( !file_exists( $new_rep ) )
+		if( !is_dir( $new_rep ) )
 			mkdir( $new_rep, 0755, true );
 
 		//deplacer fichier
@@ -161,7 +161,7 @@ class Upload_files
 	{
 		//lister repertoire
 		$files = array();
-		if( file_exists( $path ))
+		if( is_dir( $path ))
 		if( $dh = opendir( $path ))
 		{
 			while (false !== ($filename = readdir($dh)) )
