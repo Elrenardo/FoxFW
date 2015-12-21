@@ -591,13 +591,28 @@ class FoxFWKernel
 			$config['View']       += $searchAddFile( $value.'view/' );
 		}
 		//-------------------------------------------------------
-		//Ecrassement des view surcharge par le bundle design
-		if( !isset($config['FoxFW']['bundle_design'])) exit('config:foxfw:bundle_design lost');
-		$path = $config['Define']['_BUNDLE'].$config['FoxFW']['bundle_design'];
+		//Surcharge des bundles par le bundle master
+		if( isset($config['MasterBundle'])) 
+		{
+			//Detections des controllers
+			$tab = $searchAddFile( $config['MasterBundle'].'controller/' );
+			foreach ($tab as $key => $value)
+				$config['Controller'][ $key ] = $value;
+
+			//Detection des models
+			$tab = $searchAddFile( $config['MasterBundle'].'model/' );
+			foreach ($tab as $key => $value)
+				$config['Model'][ $key ] = $value;
+			
+			//Detection des view
+			$tab = $searchAddFile( $config['MasterBundle'].'view/' );
+			foreach ($tab as $key => $value)
+				$config['View'][ $key ] = $value;
+		}
 		
-		$tab = $searchAddFile( $path ); //Marche pas: $config['View'] += $searchAddFile( $path );
+		/*$tab = $searchAddFile( $path ); //Marche pas: $config['View'] += $searchAddFile( $path );
 		foreach ($tab as $key => $value)
-			$config['View'][ $key ] = $value;
+			$config['View'][ $key ] = $value;*/
 
 		//-------------------------------------------------------
 		//compilation de la config si cache ON

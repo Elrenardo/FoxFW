@@ -27,5 +27,7 @@
 	"AltoRouter":
 	{
 		"BasePath"  : "git/FoxFW/"
-	}
+	},
+
+	"MasterBundle":"./site/"
 }
