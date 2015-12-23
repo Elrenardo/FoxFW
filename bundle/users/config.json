@@ -1,0 +1,13 @@
+{
+	"Route":
+	{
+		"users"    : "users/route.json",
+		"usersMB"  : "users/routeMEMBRE.json",
+		"usersADM" : "users/routeADMIN.json"
+	},
+	
+	"Roles":
+	{
+		"USERS_PERMISSION":"USERS_PERMISSION"
+	}
+}

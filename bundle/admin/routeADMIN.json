@@ -1,0 +1,41 @@
+{
+	"PanelAdmin_view":
+	{
+		"path"       : "admin",
+		"method"     : "GET",
+		"controller" : "Controller_PanelAdmin#index",
+		"firewall"   : "ADMIN"
+	},
+	
+	"PanelAdmin_viderCache":
+	{
+		"path"       : "config/viderCache",
+		"method"     : "GET",
+		"controller" : "Controller_PanelAdmin#viderCache",
+		"firewall"   : "CONFIG"
+	},
+
+	"PanelAdmin_viewRouter":
+	{
+		"path"       : "viewRouter",
+		"method"     : "GET",
+		"controller" : "Controller_PanelAdmin#viewRouter",
+		"firewall"   : "CONFIG"
+	},
+
+	"PanelAdmin_viewConfiguration":
+	{
+		"path"       : "viewConfiguration",
+		"method"     : "GET",
+		"controller" : "Controller_PanelAdmin#viewConfiguration",
+		"firewall"   : "CONFIG"
+	},
+
+	"PanelAdmin_viewMVC":
+	{
+		"path"       : "viewMVC",
+		"method"     : "GET",
+		"controller" : "Controller_PanelAdmin#viewMVC",
+		"firewall"   : "CONFIG"
+	}
+}

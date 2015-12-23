@@ -1,0 +1,17 @@
+{
+	"Route":
+	{
+		"calendrier"   :"calendrier/route.json",
+		"calendrierAdm":"calendrier/routeADMIN.json"
+	},
+	
+	"Calendrier":
+	{
+		"tag":
+		{
+			"Evénement":"#1A1A59",
+			"Formation":"#BA0B0B",
+			"Rencontre":"#6E8F08"
+		}
+	}
+}

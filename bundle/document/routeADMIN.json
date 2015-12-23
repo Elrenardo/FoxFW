@@ -1,0 +1,49 @@
+{
+	"Document_view":
+	{
+		"path"       : "document/",
+		"method"     : "GET|POST",
+		"controller" : "Controller_document#view",
+		"firewall"   : "ADMIN"
+	},
+
+	"Document_addDir":
+	{
+		"path"       : "document/addDir",
+		"method"     : "GET",
+		"controller" : "Controller_document#addDir",
+		"firewall"   : "ADMIN"
+	},
+
+	"Document_removeDir":
+	{
+		"path"       : "document/delDir",
+		"method"     : "GET",
+		"controller" : "Controller_document#removeDir",
+		"firewall"   : "ADMIN"
+	},
+
+	"Document_removeFile":
+	{
+		"path"       : "document/delFile",
+		"method"     : "GET",
+		"controller" : "Controller_document#removeFile",
+		"firewall"   : "ADMIN"
+	},
+
+	"Document_upload":
+	{
+		"path"       : "document/upload",
+		"method"     : "POST",
+		"controller" : "Controller_document#upload",
+		"firewall"   : "ADMIN"
+	},
+
+	"Document_confirmEditFile":
+	{
+		"path"       : "document/editFile",
+		"method"     : "POST",
+		"controller" : "Controller_document#confirmEditFile",
+		"firewall"   : "ADMIN"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"index":
+	{
+		"path"       : "",
+		"method"     : "GET|POST",
+		"controller" : "Controller_index#index",
+		"firewall"   : "ANONYME"
+	}
+}

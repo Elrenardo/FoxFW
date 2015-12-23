@@ -1,0 +1,48 @@
+{
+	"calendrier_addEvent":
+	{
+		"path"       : "calendrier/addEvent",
+		"method"     : "GET",
+		"controller" : "Controller_calendrier#addEvenement",
+		"firewall"   : "ADMIN"
+	},
+
+	"calendrier_confirmAddEvent":
+	{
+		"path"       : "calendrier/confirm_addEvent",
+		"method"     : "POST",
+		"controller" : "Controller_calendrier#confirmAddEvenement",
+		"firewall"   : "ADMIN"
+	},
+
+	"calendrier_removeEvent":
+	{
+		"path"       : "calendrier/removeEvent/[**:id]",
+		"method"     : "GET",
+		"controller" : "Controller_calendrier#removeEvenement",
+		"firewall"   : "ADMIN"
+	},
+
+	"calendrier_editEvent":
+	{
+		"path"       : "calendrier/editEvent/[**:id]",
+		"method"     : "GET",
+		"controller" : "Controller_calendrier#editEvenement",
+		"firewall"   : "ADMIN"
+	},
+	
+	"calendrier_confirmEditEvent":
+	{
+		"path"       : "calendrier/confirmEditEvent",
+		"method"     : "POST",
+		"controller" : "Controller_calendrier#confirmEditEvenement",
+		"firewall"   : "ADMIN"
+	},
+	"calendrier_adminlisteEvent":
+	{
+		"path"       : "calendrier/adminliste",
+		"method"     : "GET",
+		"controller" : "Controller_calendrier#adminViewListEvenement",
+		"firewall"   : "ADMIN"
+	}
+}

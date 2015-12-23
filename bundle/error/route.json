@@ -1,0 +1,25 @@
+{
+	"error400":
+	{
+		"path"       : "error/400",
+		"method"     : "GET|POST",
+		"controller" : "Controller_error#e400",
+		"firewall"   : "ANONYME"
+	},
+
+	"error401":
+	{
+		"path"       : "error/401",
+		"method"     : "GET|POST",
+		"controller" : "Controller_error#e401",
+		"firewall"   : "ANONYME"
+	},
+
+	"error404":
+	{
+		"path"       : "error/404",
+		"method"     : "GET|POST",
+		"controller" : "Controller_error#e404",
+		"firewall"   : "ANONYME"
+	}
+}

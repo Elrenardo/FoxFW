@@ -1,0 +1,51 @@
+{
+	"user_login":
+	{
+		"path"       : "user/login",
+		"method"     : "GET",
+		"controller" : "Controller_user#login",
+		"firewall"   : "ANONYME"
+	},
+	"user_confirmlogin":
+	{
+		"path"       : "user/connect",
+		"method"     : "POST",
+		"controller" : "Controller_user#confirmLogin",
+		"firewall"   : "ANONYME"
+	},
+	"user_inscription":
+	{
+		"path"       : "user/inscription",
+		"method"     : "GET",
+		"controller" : "Controller_user#inscription",
+		"firewall"   : "ANONYME"
+	},
+	"user_confirmInscription":
+	{
+		"path"       : "user/inscription",
+		"method"     : "POST",
+		"controller" : "Controller_user#confirmInscription",
+		"firewall"   : "ANONYME"
+	},
+	"user_passLost":
+	{
+		"path"       : "user/passlost",
+		"method"     : "GET",
+		"controller" : "Controller_user#passLost",
+		"firewall"   : "ANONYME"
+	},
+	"user_confirmPassLost":
+	{
+		"path"       : "user/passlost",
+		"method"     : "POST",
+		"controller" : "Controller_user#confirmPassLost",
+		"firewall"   : "ANONYME"
+	},
+	"user_changePassLost":
+	{
+		"path"       : "user/passlost/[**:clef]",
+		"method"     : "GET",
+		"controller" : "Controller_user#changePassLost",
+		"firewall"   : "ANONYME"
+	}
+}

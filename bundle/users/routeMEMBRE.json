@@ -1,0 +1,30 @@
+{
+	"user":
+	{
+		"path"       : "user",
+		"method"     : "GET",
+		"controller" : "Controller_user#panelUser",
+		"firewall"   : "MEMBRE"
+	},
+	"user_deco":
+	{
+		"path"       : "user/deco",
+		"method"     : "GET",
+		"controller" : "Controller_user#deconnexion",
+		"firewall"   : "MEMBRE"
+	},
+	"user_changePassword":
+	{
+		"path"       : "user/newpassword",
+		"method"     : "GET",
+		"controller" : "Controller_user#changePassword",
+		"firewall"   : "MEMBRE"
+	},
+	"user_confirmChangePassword":
+	{
+		"path"       : "user/newpassword",
+		"method"     : "POST",
+		"controller" : "Controller_user#confirmChangePassword",
+		"firewall"   : "MEMBRE"
+	}
+}

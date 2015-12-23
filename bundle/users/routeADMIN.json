@@ -1,0 +1,33 @@
+{
+	"user_viewListeUsers":
+	{
+		"path"       : "user/viewListeUsers",
+		"method"     : "GET",
+		"controller" : "Controller_user#viewListeUsers",
+		"firewall"   : "ADMIN"
+	},
+
+	"user_searchListeUsers":
+	{
+		"path"       : "user/searchListeUsers",
+		"method"     : "POST",
+		"controller" : "Controller_user#searchListeUsers",
+		"firewall"   : "ADMIN"
+	},
+
+	"user_updateRole":
+	{
+		"path"       : "user/addRole",
+		"method"     : "POST",
+		"controller" : "Controller_user#updateRole",
+		"firewall"   : "USERS_PERMISSION"
+	},
+
+	"user_delete":
+	{
+		"path"       : "delete/[**:id]",
+		"method"     : "GET",
+		"controller" : "Controller_user#delete",
+		"firewall"   : "USERS_PERMISSION"
+	}
+}

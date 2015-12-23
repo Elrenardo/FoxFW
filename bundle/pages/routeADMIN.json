@@ -1,0 +1,65 @@
+{
+	"Page_viewListeAllPage":
+	{
+		"path"       : "pageGestion/listePage",
+		"method"     : "GET",
+		"controller" : "Controller_page#viewlistePage",
+		"firewall"   : "ADMIN"
+	},
+
+	"Page_viewListePage":
+	{
+		"path"       : "pageGestion/listePage",
+		"method"     : "GET",
+		"controller" : "Controller_page#viewlistePage",
+		"firewall"   : "ADMIN"
+	},
+
+	"Page_addPage":
+	{
+		"path"       : "pageGestion/addPage",
+		"method"     : "GET",
+		"controller" : "Controller_page#viewAddPage",
+		"firewall"   : "ADMIN"
+	},
+
+	"Page_confirmaddPage":
+	{
+		"path"       : "pageGestion/confirmaddPage",
+		"method"     : "POST",
+		"controller" : "Controller_page#confirmAddPage",
+		"firewall"   : "ADMIN"
+	},
+
+	"Page_viewUpdatePage":
+	{
+		"path"       : "pageGestion/updatePage/[i:id]",
+		"method"     : "GET",
+		"controller" : "Controller_page#viewUpdatePage",
+		"firewall"   : "ADMIN"
+	},
+
+	"Page_confirmUpdatePage":
+	{
+		"path"       : "pageGestion/confirmupdatePage",
+		"method"     : "POST",
+		"controller" : "Controller_page#confirmEditPage",
+		"firewall"   : "ADMIN"
+	},
+
+	"Page_removePage":
+	{
+		"path"       : "pageGestion/removePage/[i:id]",
+		"method"     : "GET",
+		"controller" : "Controller_page#removePage",
+		"firewall"   : "ADMIN"
+	},
+
+	"Page_searchAdminPage":
+	{
+		"path"       : "pageGestion/ADMsearch",
+		"method"     : "POST",
+		"controller" : "Controller_page#searchAdminPage",
+		"firewall"   : "ADMIN"
+	}
+}

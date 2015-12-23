@@ -1,0 +1,45 @@
+{
+	"calendrier_year":
+	{
+		"path"       : "calendrier/year/[**:id]",
+		"method"     : "GET",
+		"controller" : "Controller_calendrier#index",
+		"firewall"   : "ANONYME"
+	},
+
+	"calendrier_listeEvent":
+	{
+		"path"       : "calendrier/liste",
+		"method"     : "GET",
+		"controller" : "Controller_calendrier#viewListEvenement",
+		"firewall"   : "ANONYME"
+	},
+	"calendrier_listeComplete":
+	{
+		"path"       : "calendrier/allListe",
+		"method"     : "GET",
+		"controller" : "Controller_calendrier#viewAllListEvenement",
+		"firewall"   : "ANONYME"
+	},
+	"calendrier_listeTag":
+	{
+		"path"       : "calendrier/listeTag/[**:id]",
+		"method"     : "GET",
+		"controller" : "Controller_calendrier#viewListeTag",
+		"firewall"   : "ANONYME"
+	},
+	"calendrier_view":
+	{
+		"path"       : "calendrier/view/[**:id]",
+		"method"     : "GET",
+		"controller" : "Controller_calendrier#calendrier_view",
+		"firewall"   : "ANONYME"
+	},
+	"calendrier_listeDate":
+	{
+		"path"       : "calendrier/listeDate/[**:id]",
+		"method"     : "GET",
+		"controller" : "Controller_calendrier#viewListDate",
+		"firewall"   : "ANONYME"
+	}
+}

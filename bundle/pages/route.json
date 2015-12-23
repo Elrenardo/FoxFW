@@ -1,0 +1,25 @@
+{
+	"Page_viewPage":
+	{
+		"path"       : "page/[*:id]",
+		"method"     : "GET",
+		"controller" : "Controller_page#viewPage",
+		"firewall"   : "ANONYME"
+	},
+
+	"Page_searchPage":
+	{
+		"path"       : "pageGestion/search/[**:id]",
+		"method"     : "GET",
+		"controller" : "Controller_page#searchPage",
+		"firewall"   : "ANONYME"
+	},
+
+	"Page_searchPagePost":
+	{
+		"path"       : "pageGestion/search",
+		"method"     : "POST",
+		"controller" : "Controller_page#searchPage",
+		"firewall"   : "ANONYME"
+	}
+}

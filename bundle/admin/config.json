@@ -1,0 +1,18 @@
+{
+	"Route":
+	{
+		"panelAdmin":"admin/routeADMIN.json"
+	},
+
+	"Admin":
+	{
+		"cache"  : "panelAdmin.html",
+		"method" : "viewPanelAdmin"
+	},
+
+	"Roles":
+	{
+		"CONFIG":"CONFIG",
+		"ADMIN" :"ADMIN"
+	}
+}

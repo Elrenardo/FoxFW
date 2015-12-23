@@ -1,10 +1,11 @@
 {
 	"Define":
 	{
-		"_BUNDLE"  : "_bundle/",
-		"_VENDOR"  : "_vendor/",
+		"_BUNDLE"  : "bundle/",
+		"_VENDOR"  : "vendor/",
 		"_WEB"     : "web/",
-		"_CACHE"   : "_cache/"
+		"_CACHE"   : "cache/",
+		"_MBUNDLE" : "site/"
 	},
 
 	"Require":
@@ -29,5 +30,18 @@
 		"BasePath"  : "git/FoxFW/"
 	},
 
-	"MasterBundle":"./site/"
+	"Addon":
+	{
+		"foxfwTwig": "../vendor/foxFW/addons/addon_twig.php"
+	},
+
+	"FoxFW":
+	{
+		"email"            : "contact@helloWorld.fr",
+		"controller_error" : "Controller_error",
+		"view_error"       : "foxfw/view/foxfw_viewError.html.twig",
+		"log_output"       : "log.txt",
+		"php_error"        : true,
+		"cache"            : false
+	}
 }

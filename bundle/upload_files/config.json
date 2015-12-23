@@ -1,0 +1,11 @@
+{
+	"Route":
+	{
+		"Upload_files" : "upload_files/routeADMIN.json"
+	},
+
+	"Upload_files":
+	{
+		"path_buffer":"buffer/"
+	}
+}

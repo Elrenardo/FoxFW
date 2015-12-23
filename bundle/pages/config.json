@@ -1,0 +1,7 @@
+{
+	"Route":
+	{
+		"pages"    : "pages/route.json",
+		"pagesADM" : "pages/routeADMIN.json"
+	}
+}

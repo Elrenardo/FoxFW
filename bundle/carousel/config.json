@@ -1,0 +1,7 @@
+{
+	"Route":
+	{
+		"carousel"   :"carousel/route.json",
+		"carouselADM":"carousel/routeADMIN.json"
+	}
+}

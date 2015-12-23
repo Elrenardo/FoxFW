@@ -1,0 +1,9 @@
+{
+	"carousel_view":
+	{
+		"path"       : "viewCarousel",
+		"method"     : "GET",
+		"controller" : "Controller_carousel#view",
+		"firewall"   : "ANONYME"
+	}
+}
