@@ -1,1 +1,0 @@
-<p style="color:red;"><b>/!\Erreur View /!\</b></p>
