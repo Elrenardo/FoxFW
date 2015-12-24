@@ -34,7 +34,7 @@
 		  </div>
 		  <div style="height:15px;"/></div>
 		  <div class="form-group">
-		  	<p style="float:right;"><input type="checkbox" name="reload" value="1"> Rester connecter !</p>
+		  	<p style="float:right;"><input type="checkbox" name="reload" value="1" checked> Rester connecter !</p>
 		  	<input style="float:left;" type="submit" class="btn btn-default" value="Connexion">
 		  </div>
 		  <div style="clear: both;"/></div>
