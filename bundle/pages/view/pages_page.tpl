@@ -53,7 +53,7 @@
 					  fjs.parentNode.insertBefore(js, fjs);
 					}(document, 'script', 'facebook-jssdk'));</script>
 
-					<div class="fb-like" data-href="http://studiogoupil.fr/" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+					<div class="fb-like" data-href="{{ router('index') }}" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
 				</div>
 
 				<div style="float:left;margin:10px;">

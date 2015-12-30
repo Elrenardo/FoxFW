@@ -14,8 +14,9 @@ class Controller_page
 
 	public function __construct()
     {
-    	FoxFWKernel::addVendor('foxFW/FoxFWPage.php');
-    	$this->page = new FoxFWPage();
+    	//FoxFWKernel::addVendor('foxFW/FoxFWPage.php');
+    	FoxFWKernel::addModel('Page');
+    	$this->page = new Page();
 
     	if( !is_dir( _WEB.'/page' ))
     		mkdir( _WEB.'/page', 0755, true);

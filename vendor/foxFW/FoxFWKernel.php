@@ -1,15 +1,15 @@
 <?php
 /*
 	::FoxFWKernel::
-	V4.00
+	V4.02
 */
 
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 22/12/2015
+Update  : 30/12/2015
 Licence : © Copyright
-Version : 4.00
+Version : 4.02
 -------------------------
 */
 
@@ -410,8 +410,13 @@ class FoxFWKernel
 	{
 		if( !class_exists( $name ))
 		{
-			$path = $GLOBALS['Config']['Model'][ $name ];
-			return FoxFWKernel::addFile( $path );
+			if( isset($GLOBALS['Config']['Model'][ $name ]))
+			{
+				$path = $GLOBALS['Config']['Model'][ $name ];
+				return FoxFWKernel::addFile( $path );
+			}
+			else
+				die('Model lost: '.$name );
 		}
 		return false;
 	}
@@ -426,8 +431,13 @@ class FoxFWKernel
 	{
 		if( !class_exists( $controller ))
 		{
-			$path = $GLOBALS['Config']['Controller'][ $controller ];
-			return FoxFWKernel::addFile( $path );
+			if( isset( $GLOBALS['Config']['Controller'][ $controller ] ))
+			{
+				$path = $GLOBALS['Config']['Controller'][ $controller ];
+				return FoxFWKernel::addFile( $path );
+			}
+			else
+				die('Controller lost: '.$controller );
 		}
 		return false;
 	}
@@ -451,7 +461,6 @@ class FoxFWKernel
 	//--------------------------------------------------------------------------------
 	public static function addFile( $file )
 	{
-		$file = $file;
 		if( file_exists( $file ))
 		{
 			require_once $file;

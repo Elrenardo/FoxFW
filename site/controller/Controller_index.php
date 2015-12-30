@@ -22,10 +22,11 @@ class Controller_index
 	//--------------------------------------------------------------------------------
 	public function index( $params )
 	{
-		FoxFWKernel::addVendor('foxFW/FoxFWPage.php');
+		//FoxFWKernel::addVendor('foxFW/Page.php');
+		FoxFWKernel::addModel('Page');
 
 		//liste new article
-    	$page = new FoxFWPage();
+    	$page = new Page();
     	$liste = $page->liste(array('max'=>20,'type'=>'Article'));
 
 		//return $GLOBALS['Twig']->render( _BUNDLE.'foxfw/view/index.html.twig', array('liste'=>$liste));

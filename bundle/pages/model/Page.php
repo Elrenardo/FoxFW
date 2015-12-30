@@ -2,12 +2,12 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 24/09/2015
+Update  : 30/12/2015
 Licence : © Copyright
 Version : 1.0
 -------------------------
 */
-class FoxFWPage
+class Page
 {
 	public function __construct() 
     {
@@ -22,9 +22,9 @@ class FoxFWPage
 	//--------------------------------------------------------------------------------
     static public function get( $id )
     {
-    	$data =  R::load( 'foxfwpage', $id );
+    	$data =  R::load( 'page', $id );
         if(!empty($data))
-            $data['body'] = FoxFWPage::getBody( $data['filename'] );
+            $data['body'] = Page::getBody( $data['filename'] );
         return $data;
     }
     //--------------------------------------------------------------------------------
@@ -35,9 +35,9 @@ class FoxFWPage
     //--------------------------------------------------------------------------------
     static public function getByUrl( $url )
     {
-        $data = R::findOne( 'foxfwpage', 'url=?', [ $url ] );
+        $data = R::findOne( 'page', 'url=?', [ $url ] );
         if(!empty($data))
-            $data['body'] = FoxFWPage::getBody( $data['filename'] );
+            $data['body'] = Page::getBody( $data['filename'] );
         return $data;
     }
 
@@ -62,14 +62,14 @@ class FoxFWPage
         //verification de l'id dispo
         $compte = 0;
         $buffer = FoxFWKernel::URLencode( $data['titre']);
-        while( !empty(R::find( 'foxfwpage', 'url=?', [ $buffer ])) )
+        while( !empty(R::find( 'page', 'url=?', [ $buffer ])) )
         {
             $compte++;
             $buffer = FoxFWKernel::URLencode( $data['titre'].'-'.$compte );
         }
 
         //preparation de l'article
-    	$article           = R::dispense( 'foxfwpage' );
+    	$article           = R::dispense( 'page' );
         $article->url      = $buffer;
     	$article->titre    = $data['titre'];
     	$article->tag      = $data['tag'];
@@ -107,7 +107,7 @@ class FoxFWPage
 	//--------------------------------------------------------------------------------
     static public function update( $id, $data )
     {
-    	$article = R::load( 'foxfwpage', $id );
+    	$article = R::load( 'page', $id );
 
         //si existe
         if( $article == NULL )
@@ -158,11 +158,11 @@ class FoxFWPage
     //--------------------------------------------------------------------------------
     static public function search( $tag )
     {
-        $data = R::find( 'foxfwpage', 'tag LIKE ? ORDER by date DESC', [ '%'.$tag.'%' ] );
+        $data = R::find( 'page', 'tag LIKE ? ORDER by date DESC', [ '%'.$tag.'%' ] );
         
         if(!empty( $data ))
         foreach ( $data as $key )
-            $key->body = FoxFWPage::getBody( $key->filename );
+            $key->body = Page::getBody( $key->filename );
 
         return $data;
     }
@@ -199,13 +199,13 @@ class FoxFWPage
         }
 
         //recherche
-        $data = R::find( 'foxfwpage', $type.' ORDER by ? DESC, date DESC LIMIT ?,?', 
+        $data = R::find( 'page', $type.' ORDER by ? DESC, date DESC LIMIT ?,?', 
             [ $order_by, $limit_min, $limit_max ] );
         
         //recuperer le body
         if(!empty( $data ))
         foreach( $data as $key )
-            $key->body = FoxFWPage::getBody( $key->filename );
+            $key->body = Page::getBody( $key->filename );
         return $data;
     }
 
@@ -231,7 +231,7 @@ class FoxFWPage
     //--------------------------------------------------------------------------------
     static public function remove( $id, $all = true )
     {
-        $data = R::load( 'foxfwpage', $id );
+        $data = R::load( 'page', $id );
         if( $data->id == 0 )
             return '';
         $url = $data->url;
