@@ -21,5 +21,13 @@
 		"method"     : "POST",
 		"controller" : "Controller_page#searchPage",
 		"firewall"   : "ANONYME"
+	},
+
+	"Page_viewListePage":
+	{
+		"path"       : "pageGestion/listePage",
+		"method"     : "GET",
+		"controller" : "Controller_page#viewListePage",
+		"firewall"   : "ANONYME"
 	}
 }

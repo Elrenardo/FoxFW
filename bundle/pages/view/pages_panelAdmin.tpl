@@ -1,5 +1,5 @@
 <li>
-	<a href="{{ router('Page_viewListePage') }}">
+	<a href="{{ router('Page_viewListeAdminPage') }}">
 		<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 		Liste Pages
 	</a>

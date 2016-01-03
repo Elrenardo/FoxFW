@@ -3,48 +3,74 @@
 {% block title %}Inscription{% endblock %}
 
 {% block container %}
-	<div id="inscription" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">
-		{% if msg is not empty %}
-    		<p  style="margin:5px;padding:5px;text-align:center; background-color:#d9534f;color:#fff;border-radius:5px;">{{ msg|upper }}</p>
-		{% endif %}
-		
-		<div class="info" >
-			<div>
-				<h4>Bienvenu !</h4>
-				Inscription au site
-			</div>
+<div class="container">
+	<div class="section">
+		<div class="row">
+			
+			<form method="POST" action="{{ router('user_confirmInscription') }}" class="col s10 offset-s1 m8 offset-m2">
+			  {{ securityForm() }}
+
+				<div class="card blue-grey">
+					<div class="card-content white-text">
+						<h5 class="card-title">Formulaire d'inscription</h5>
+						<p>
+							Utiliser le formulaire si dessous pour vous créer un compte.
+						</p>
+					</div>
+
+					<div class="card-action">
+						<a href="{{ router('user_login')}}">Vous avez déjà un compte ?</a>
+					</div>
+				</div>
+
+				{% if msg is not empty %}
+				<div class="card  red darken-1">
+					<div class="card-content white-text">
+						<h5 class="card-title">Erreur d'inscription ?</h5>
+						<p>
+							{{ msg|upper }}
+						</p>
+					</div>
+		        </div>
+				{% endif %}
+				<br/>
+
+				<div class="row">
+					<div class="input-field">
+						<input id="email" type="email" class="validate" id="email" name="email" placeholder="Saisissez votre Email" required>
+						<label for="email" data-error="wrong" data-success="right">Adresse Email</label>
+					</div>
+				</div>
+				<br/>
+
+				<div class="row">
+					<div class="input-field">
+						<input id="password" type="password" class="validate" name="password" placeholder="Saisissez votre mot de passe" required>
+						<label for="email">Mot de passe</label>
+					</div>
+				</div>
+				<br/>
+
+				<div class="row">
+					<div class="input-field">
+						<input id="password2" type="password" class="validate" name="password2" placeholder="Retaper votre mot de passe" required>
+						<label for="email">Retaper votre Mot de passe</label>
+					</div>
+				</div>
+				<br/>
+
+			    <div class="blague">
+					Vous ne devez pas remplir ce champ *
+					<input type="text" name="blaque" id="blague" />
+				</div>
+
+			  <div class="row">
+				  <button class="btn waves-effect waves-light" type="submit" name="action">Inscription
+				    <i class="material-icons right">send</i>
+				  </button>
+			  </div>
+			</form>
 		</div>
-
-		<form method="POST" action="{{ router('user_confirmInscription') }}">
-		  {{ securityForm() }}
-		  <div class="form-group">
-		    <label for="email">Adresse email:</label>
-		    <input type="email" class="form-control" id="email" name="email" placeholder="Entrer votre Email" required>
-		  </div>
-
-		   <div class="form-group">
-		   		<label for="email">Password:</label>
-		   		<input type="password" class="form-control" id="password" name="password" placeholder="Entrer votre mot de passe" required>
-		   </div>
-
-		   	<div class="form-group">
-		   		<label for="email">Retaper le Password:</label>
-		   		<input type="password" class="form-control" id="password2" name="password2" placeholder="Retaper votre mot de passe" required>
-		   </div>
-
-		    <div class="form-group blague">
-				<label for="blague">
-				Vous ne devez pas remplir ce champ *
-				</label>
-				<input type="text" name="blaque" id="blague" />
-			</div>
-
-
-		  <hr/>
-		  <div class="form-group">
-		  	<input style="width:200px;float:left;" type="submit" class="btn btn-primary" value="Inscription">
-		  	<a href="{{ router('user_login')}}" style="float:right;">Vous avez déjà un compte ?</a>
-		  </div>
-		</form>
 	</div>
+</div>
 {% endblock %}

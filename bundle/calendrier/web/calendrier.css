@@ -159,37 +159,3 @@
 {
 	padding:20px;
 }
-
-
-
-.calendrier_tag
-{
-	width:128px;
-	height:64px;
-	color:white;
-	padding:5px;
-	border-radius: 5px;
-	padding-top:20px;
-	text-align:center;
-	letter-spacing : 3px;
-	font-size: 1.2em;
-}
-
-#calendrier .calendrier_view
-{
-	border:5px solid #dbdbdb;
-	border-left:none;
-	border-top:none;
-	border-bottom:none;
-	padding-right:30px;
-	height:380px;
-}
-
-#calendrier .calendrier_liste_event
-{
-	float:left;
-	margin-left:50px;
-	height:380px;
-	width:590px;
-	overflow-y: scroll;
-}

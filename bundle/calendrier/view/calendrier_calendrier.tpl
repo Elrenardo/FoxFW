@@ -1,7 +1,6 @@
-
+<div id="calendrier" class="hide-on-small-only">
 
 <link rel="stylesheet" property='stylesheet' href="{{ bundlePath('calendrier#calendrier.css') }}"/>
-<div class="calendrier_panel img-thumbnail col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 	<div class="period">
 		<!-- INFO SUR L'ANNE -->
@@ -28,7 +27,7 @@
 			</ul>
 		</div>
 		<div class="clear" style="margin-bottom:20px;"></div>
-			<div class="calendrier_view" style="float:left;">
+			<div class="calendrier_view col s12">
 				{% for key,days in dates %}
 					<div class="month" id="month{{ key }}">
 						<table>
@@ -88,30 +87,7 @@
 					</div>
 				{% endfor %}
 			</div>
-
-			<!-- LISTE DES EVENEMENT -->
-			<fieldset class="calendrier_liste_event">
-				<legend style="padding-bottom:10px;">Les prochains événements</legend>
-				{% for event in event %}
-					<div style="clear:both;">
-						<div style="margin-right:20px;">
-							<a href="{{ router('calendrier_listeTag', event.tag ) }}" class="calendrier_tag" style="background-color:{{ tagColor[ event.tag ] }};float:left;margin-right:10px;">
-			      				<b>{{ event.tag }}</b>
-			   				</a>
-
-			   				<b><a href="{{ router('calendrier_view',event.url) }}">{{ event.titre|upper }}</a></b><br/>
-			   				Le: <b>{{ timeToDate(event.date) }}</b><br/>
-			   				Au: <b>{{ timeToDate(event.date_end) }}</b><br/>
-			   				A: <b>{{ event.lieu }}</b><br/>
-			   				
-							<div>{{ event.body|raw }}</div><br/>
-						</div>
-					</div>
-				{% endfor %}
-			</fieldset>
-
 		</div>
-</div>
 
 
 <script type="text/javascript">
@@ -142,3 +118,4 @@ jQuery( function($)
 	});
 });
 </script>
+</div>

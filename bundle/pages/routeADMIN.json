@@ -1,17 +1,9 @@
 {
-	"Page_viewListeAllPage":
+	"Page_viewListeAdminPage":
 	{
-		"path"       : "pageGestion/listePage",
+		"path"       : "pageGestion/AdminlistePage",
 		"method"     : "GET",
-		"controller" : "Controller_page#viewlistePage",
-		"firewall"   : "ADMIN"
-	},
-
-	"Page_viewListePage":
-	{
-		"path"       : "pageGestion/listePage",
-		"method"     : "GET",
-		"controller" : "Controller_page#viewlistePage",
+		"controller" : "Controller_page#viewListeAdminPage",
 		"firewall"   : "ADMIN"
 	},
 

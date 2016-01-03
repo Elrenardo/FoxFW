@@ -3,17 +3,32 @@
 {% block title %}{{ parent() }}{% endblock %}
 
 {% block container %}
-<div class="row">
-	<div id="calendrier" class="container hidden-xs hidden-sm visible-md visible-lg">
-		{{ controller("Controller_calendrier#viewCalendrier") }}
-	</div>
-
-	<div class="container" >
+<div class="container">
+	<div class="section">
+		<div class="row">
 		{{ controller("Controller_carousel#view") }}
+		</div>
+	</div>
+</div>
+
+<div class="divider"></div>
+<div class="blue-grey lighten-5 hide-on-small-only">
+	<div class="container">
+		<div class="section">
+			<div class="row">
+				{{ controller("Controller_calendrier#viewCalendrier") }}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="divider"></div>
+<div class="container">
+	<div class="section">
+		<div class="row">
+			{{ controller("Controller_page#viewListePage") }}
+		</div>
 	</div>
 
-	<div id="article" class="container">
-		{% include getView('pages_article_graph') %}
-	</div>
 </div>
 {% endblock %}

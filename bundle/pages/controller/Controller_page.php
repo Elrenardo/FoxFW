@@ -206,7 +206,7 @@ class Controller_page
 		$files = Upload_files::getFilesDir( _WEB.'page/'.$id.'/' );
 
 		//rendu
-		return $GLOBALS['Twig']->render( $data['twig'], array(
+		return $GLOBALS['Twig']->render( FoxFWKernel::getView($data['twig']), array(
 			'page'=>$data,
 			'id_page'=>$data->id,
 			'files' =>$files ));
@@ -219,6 +219,22 @@ class Controller_page
 	//
 	//--------------------------------------------------------------------------------
 	public function viewListePage( $params )
+	{
+		if( isset( $params['id'] ))
+			$data = $this->page->liste( array('order_by'=>'titre', 'type'=>$params['id'] ) );
+		else
+			$data = $this->page->liste( array('order_by'=>'titre' ) );
+
+		return $GLOBALS['Twig']->render( FoxFWKernel::getView('pages_article_graph'), array('liste'=>$data));
+	}
+
+	//--------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------
+	//
+	//
+	//
+	//--------------------------------------------------------------------------------
+	public function viewListeAdminPage( $params )
 	{
 		if( isset( $params['id'] ))
 			$data = $this->page->liste( array('order_by'=>'titre', 'type'=>$params['id'] ) );

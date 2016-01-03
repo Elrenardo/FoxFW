@@ -6,48 +6,52 @@
 	  <title>{% block title %}{% endblock %}</title>
 	  <meta name="description" content="{% block metaDesc %}FoxFW{% endblock %}" />
 	  <meta name="keywords" content="{% block metaKey %}{% endblock %}" />
-	  <meta name="author" content="Teysseire Guillaume" />
+	  <meta name="author" content="StudioGoupil" />
 	  <meta name="robots" content="all" />
 	  <link rel="icon" type="image/png" href="{% block favicon %}{% endblock %}"/>
-	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-	  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-	  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" media="screen,projection">
 
-	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
-	  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-      <!--[if lt IE 9]>
-      		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
-
-	  {% block head %}{% endblock %}
+	  {% block css %}{% endblock %}
 	</head>
 	<body>
 		{% block body %}{% endblock %}
-		<header class="row container-fluid" >
+		<header>
 			{% if User.isLogin %}
 				<div id="panelMembre">
-					{% include getView('pattern_panelUser') %}
+					<div class="section grey darken-4">
+						<div class="row container">
+							{% include getView('pattern_panelUser') %}
+						</div>
+					</div>
 				</div>
 			{% endif %}
 			{% block header %}{% endblock %}
-			}
 		</header>
 		
-		<nav class="row" >
+		<nav class="teal lighten-2">
 			{% block menu %}{% endblock %}
 		</nav>
 		
-		<div class="row container-fluid" style="min-height:550px">
-			{% block container_body %}{% endblock %}
+		<div>
+			{% block container %}{% endblock %}
 		</div>
 
-		<footer class="row" >
+		<footer class="page-footer teal lighten-2">
 			{% block footer %}{% endblock %}
 		</footer>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	   	{% block js %}{% endblock %}
 	</body>
 </html>

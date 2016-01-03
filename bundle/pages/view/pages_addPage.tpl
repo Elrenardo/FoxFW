@@ -44,27 +44,30 @@
 
 		<form method="POST" action="{{ router( page_router ) }}" enctype="multipart/form-data">
 
-		<div class="form-group">
+		<div class="form-group" style="display:none;">
 			<b>Id Page:</b><br/>
 			<input type="text" class="form-control" name="id" class="form-control" value="{{ data.id }}" style="width:100%;">
 		</div>
 
-		<div class="form-group">
+		<div class="form-group" style="display:none;">
 			<b>Cache Page:</b><br/>
-			<input type="text" class="form-control" name="path" class="form-control" value="web/page/" style="width:100%;">
+			<input type="text" class="form-control" name="path" class="form-control" 
+			value="web/page/" 
+			style="width:100%;">
 		</div>
 
 		<div class="form-group">
 			<b>Type de Page:</b><br/>
-			<select type="text" class="form-control" name="type" class="form-control" value="{{ data.type }}{{ type }}" style="width:100%;">
-				  <option value="Page">Page</option> 
-				  <option value="Article">Article</option>
-  			</select>
+  			<input type="text" class="form-control" name="type" class="form-control" 
+			value="{{ data.type }}{{ type }}" 
+			style="width:100%;">
 		</div>
 
 		<div class="form-group">
 			<b>Template de la page:</b><br/>
-			<input type="text" class="form-control" name="twig" class="form-control" value="{{ getView('pages_page') }}" style="width:100%;">
+			<input type="text" class="form-control" name="twig" class="form-control" 
+			value="{% if data.path is not empty %}{{ data.path }}{% else %}pages_view{% endif %}" 
+			style="width:100%;">
 		</div>
 
 		{% if data is not empty %}

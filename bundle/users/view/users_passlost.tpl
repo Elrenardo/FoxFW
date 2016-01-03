@@ -3,41 +3,58 @@
 {% block title %}Compte perdu ?{% endblock %}
 
 {% block container %}
-	<div id="passlost" class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
+<div class="container">
+	<div class="section">
+		<div class="row">
 
-		<div class="info" >
-			<div>
-				<h4>Retrouver son compte !</h4>
-				Si vous avez perdu votre mot de passe, entrez votre addresse email dans le champs ci-dessous.<br/>
-				Un mail sera envoyé a votre addresse email avec un lien qui vous permettra de changer votre mot de passe !<br/>
+			<form method="POST" action="{{ router('user_confirmPassLost') }}" class="col s10 offset-s1 m8 offset-m2">
+				{{ securityForm() }}
+				
+				<div class="card blue-grey">
+					<div class="card-content white-text">
+						<h5 class="card-title">Retrouver son compte !</h5>
+						<p>
+							Si vous avez perdu votre mot de passe, entrez votre addresse email dans le champs ci-dessous.<br/>
+							Un mail sera envoyé a votre addresse email avec un lien qui vous permettra de changer votre mot de passe !<br/>
+							<br/>
+							<b>/!\ Il ce peux que votre message tombe dans les SPAMs. Pensez à les vérifier !</b><br/>
+							<br/>
+							Attention: la durée du lien de réinisialisation de mot de passe est limité dans le temps !
+						</p>
+					</div>
+					<div class="card-action">
+		              	<a href="{{ router('user_login')}}">Se connecter ?</a>
+		            </div>
+				</div>
+
+				{% if msg is not empty %}
+				<div class="card  red darken-1">
+					<div class="card-content white-text">
+						<h5 class="card-title">Erreur ?</h5>
+						<p>
+							{{ msg|upper }}
+						</p>
+					</div>
+		        </div>
+				{% endif %}
 				<br/>
-				<b>/!\ Il ce peux que votre message tombe dans les SPAMs. Pensez à les vérifier !</b><br/>
+
+				<div class="row">
+					<div class="input-field">
+						<input id="email" type="email" class="validate" id="email" name="email" placeholder="Entrer votre Email" required>
+						<label for="email" data-error="wrong" data-success="right">Adresse Email</label>
+					</div>
+				</div>
 				<br/>
-				( Attention: la durée du lien de réinisialisation de mot de passe est limité dans le temps !)
-			</div>
+
+				<div class="row">
+					<button class="btn waves-effect waves-light" type="submit" name="action">Réinitialisez le mot de passe par email
+			    		<i class="material-icons right">send</i>
+			  		</button>
+				</div>
+
+			</form>
 		</div>
-
-		{% if msg is not empty %}
-    		<p  style="margin:5px;padding:5px;text-align:center; background-color:#d9534f;color:#fff;border-radius:5px;">{{ msg|upper }}</p>
-		{% endif %}
-
-		<form method="POST" action="{{ router('user_confirmPassLost') }}">
-			{{ securityForm() }}
-		  <div class="form-group">
-		    <label for="email">Saisissez votre adresse Email :</label>
-		    <div class="input-group">
-    			<span class="input-group-addon">@</span>
-		    	<input type="email" class="form-control" id="email" name="email" placeholder="Entrer votre Email" required>
-		    </div>
-		  </div>
-
-		  <hr/>
-		  <div style="height:15px;"></div>
-		  <div class="form-group">
-		  	<input type="submit" style="float:left"; class="btn btn-default" value="Renvoyer le mot de passe !"/>
-		  	<a style="float:right;" href="{{ router('user_login') }}" >Retour Login</a>
-		  </div>
-
-		</form>
 	</div>
+</div>
 {% endblock %}

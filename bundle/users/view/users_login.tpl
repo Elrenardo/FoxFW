@@ -1,47 +1,73 @@
 {% extends getView('pattern_index') %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Connexion au site{% endblock %}
 
 {% block container %}
-	<div id="login" class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
+<div class="container">
+	<div class="section">
+		<div class="row">
 
-			<div class="info">
-				<div>
-					<h3>Connexion au site</h3>
-					lorum ipsum ...<br/>
-					{% if msg is not empty %}
-						<p>{{ msg|upper }}</p>
-					{% endif %}
-				</div>
-			</div>
-
-		<form method="POST" action="{{ router('user_confirmlogin') }}">
+			<form method="POST" action="{{ router('user_confirmlogin') }}" class="col s10 offset-s1 m8 offset-m2">
 			{{ securityForm() }}
-		  <div class="form-group">
-		    <label for="email">Adresse Email:</label>
-		    <div class="input-group">
-    			<span class="input-group-addon">@</span>
-		    	<input type="email" class="form-control" id="email" name="email" placeholder="Entrer votre Email" required>
-		    </div>
-		  </div>
 
-		  <div class="form-group">
-		    <label for="password">Mot de passe:</label>
-		    <div class="input-group">
-    			<span class="input-group-addon">●</span>
-		    	<input type="password" class="form-control" id="password" name="password" placeholder="Entrer votre mot de passe" required>
-		    </div>
-		  </div>
-		  <div style="height:15px;"/></div>
-		  <div class="form-group">
-		  	<p style="float:right;"><input type="checkbox" name="reload" value="1" checked> Rester connecter !</p>
-		  	<input style="float:left;" type="submit" class="btn btn-default" value="Connexion">
-		  </div>
-		  <div style="clear: both;"/></div>
-		  <hr/>
-		  <a href="{{ router('user_inscription')}}" style="float:left;">Inscription</a>
-		  <a href="{{ router('user_passLost') }}" style="float:right;">Mot de passe perdu ?</a>
-		  <div style="clear: both;"/></div>
-		</form>
+				<div class="card blue-grey">
+					<div class="card-content white-text">
+						<h5 class="card-title">Connexion</h5>
+						<p>
+							Utiliser le formulaire si dessous pour vous connecter.
+							{% if msg is not empty %}
+								</br></br>{{ msg|upper }}
+							{% endif %}
+						</p>
+					</div>
+					<div class="card-action">
+		              	<a href="{{ router('user_inscription')}}">Inscription</a>
+						<a href="{{ router('user_passLost') }}">Mot de passe perdu ?</a>
+		            </div>
+				</div>
+				
+				{% if msg is not empty %}
+				<div class="card  red darken-1">
+					<div class="card-content white-text">
+						<h5 class="card-title">Erreur de connexion ?</h5>
+						<p>
+							{{ msg|upper }}
+						</p>
+					</div>
+		        </div>
+				{% endif %}
+				<br/>
+
+				<div class="row">
+					<div class="input-field">
+						<input id="email" type="email" class="validate" id="email" name="email" placeholder="Entrer votre Email" required>
+						<label for="email" data-error="wrong" data-success="right">Adresse Email</label>
+					</div>
+				</div>
+				<br/>
+
+				<div class="row">
+					<div class="input-field">
+						<input id="password" type="password" class="validate" name="password" placeholder="Entrer votre mot de passe" required>
+						<label for="email">Mot de passe</label>
+					</div>
+				</div>
+				<br/>
+
+				<div class="row">
+					<p style="float:right;">
+						 <input type="checkbox" class="filled-in" id="filled-in-box" name="reload" value="1" checked="checked" />
+ 						 <label for="filled-in-box">Rester connecter !</label>
+					</p>
+
+					<button class="btn waves-effect waves-light" type="submit" name="action">Connexion
+			    		<i class="material-icons right">send</i>
+			  		</button>
+				</div>
+
+				<div style="clear: both;"/></div>
+			</form>
+		</div>
 	</div>
+</div>
 {% endblock %}

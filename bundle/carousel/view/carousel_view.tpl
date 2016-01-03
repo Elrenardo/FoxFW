@@ -7,7 +7,7 @@
 		  {% if i != '.' %}
 			  {% if i != '..' %}
 			  	<div>
-			  		<img class="carousel_img" src="{{ path('web/carousel/'~i) }}" alt="carousel"/>
+			  		<img class="responsive-img" src="{{ path('web/carousel/'~i) }}" alt="carousel"/>
 			  	</div>
 			  {% endif %}
 		  {% endif %}

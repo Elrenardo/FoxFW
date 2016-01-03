@@ -2,44 +2,44 @@
 
 {% block title %}Calendrier {{ parent() }}{% endblock %}
 
-{% block head_base %}
+{% block css %}{{ parent() }}
 <link rel="stylesheet" href="{{ path('web/css/calendrier.css') }}"/>
 {% endblock %}
 
 {% block container %}
-	<div class="container">
-		<ol class="breadcrumb fil_ariane img-thumbnail">
-		  <li><a href="{{ router('index') }}">Accueil</a></li>
-		  <li class="active">Calendrier</li>
-		</ol>
 
-		{% set compte = 0 %}
-		{% for i in event %}
-			{% set compte = compte +1 %}
-			<div class="img-thumbnail fil_ariane" style="width:100%;margin-bottom:20px;">
-				<div class="media" style="margin-bottom:80px;">
-				   <a href="{{ router('calendrier_listeTag', i.tag ) }}" class="pull-left calendrier_tag" style="background-color:{{ tagColor[ i.tag ] }};">
-				      <b>{{ i.tag }}</b>
-				   </a>
-				   <div class="media-body">
-				      <h1 class="media-heading" style="display:inline;">
-				      	<a href="{{ router('calendrier_view',i.url) }}">{{ i.titre }}</a>
-				      </h1>
-				      <div style="float:right;margin-left:50px;margin-bottom:20px;">
-					      <h4>
-					      		Du: <b>{{ timeToDate(i.date) }}</b><br/>
-					      		Au: <b>{{ timeToDate(i.date_end) }}</b><br/>
-					      		A: <b>{{ i.lieu }}</b>
-					      </h4>
-				  	  </div>
+{% set compte = 0 %}
+{% for i in event %}
+	{% set compte = compte +1 %}
+	<div class="row">
+		<div class="col s12 m6 offset-m3">
+			<div class="card" style="background-color:{{ tagColor[ i.tag ] }};">
+				<div class="card-content white-text">
+					<span class="card-title">[{{ i.tag }}] {{ i.titre }}</span>
+					<p>{{ i.body|raw }}</p>
+				</div>
 
-				      {{ i.body|raw }}<br/>
-				   </div>
+				<div class="card-action">
+					<table class="table" style="color:#FFF;">
+						<tr>
+							<td>Du</td><td>{{ timeToDate(i.date) }}</td>
+						</tr>
+						<tr>
+							<td>Au</td><td>{{ timeToDate(i.date_end) }}</td>
+						</tr>
+						<tr>
+							<td>A</td><td>{{ i.lieu }}</td>
+						</tr>
+					</table>
 				</div>
 			</div>
-		{% endfor %}
-		{% if compte == 0 %}
-			<h3 style="text-align:center;">Aucun Evénement futur trouvé !</h3>
-		{% endif %}
+		</div>
 	</div>
+	<!-- {{ router('calendrier_listeTag', i.tag ) }} -->
+
+{% endfor %}
+{% if compte == 0 %}
+	<h5 style="text-align:center;">Aucun Evénement futur trouvé !</h5>
+{% endif %}
+
 {% endblock %}
