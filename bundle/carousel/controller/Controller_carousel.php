@@ -61,7 +61,7 @@ class Controller_carousel
 		//lister le repertoire pour avoir les images
 		$files = scandir( $path );
 
-		return $GLOBALS['Twig']->render( FoxFWKernel::getView('carousel_view'), array('img'=>$files));
+		return $GLOBALS['Twig']->render( FoxFWKernel::getView('carousel_view'), array('img'=>$files,'path'=>$path));
 	}
 
 

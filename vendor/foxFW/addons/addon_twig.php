@@ -2,9 +2,9 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 02/11/2015
+Update  : 11/01/2016
 Licence : © Copyright
-Version : 1.1
+Version : 1.2
 -------------------------
 */
 //--------------------------------------------------------------------------------
@@ -125,4 +125,19 @@ function( $url )
 {
 	$explode = explode('/',$url );
     return $explode[ count($explode)-1 ];
+}));
+
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
+//
+//
+//
+//--------------------------------------------------------------------------------
+//get DEFINE
+$GLOBALS['Twig']->addFunction( new Twig_SimpleFunction('getDefine',
+function( $name )
+{
+	if( defined( $name ))
+		return constant( $name );
+	return 'No Define !';
 }));

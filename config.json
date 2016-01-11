@@ -3,9 +3,9 @@
 	{
 		"_BUNDLE"  : "bundle/",
 		"_VENDOR"  : "vendor/",
-		"_WEB"     : "web/",
+		"_WEB"     : "home/web/",
 		"_CACHE"   : "cache/",
-		"_MBUNDLE" : "site/"
+		"_MBUNDLE" : "home/"
 	},
 
 	"Require":

@@ -8,7 +8,10 @@ Version : 1.2
 -------------------------
 */
 
+require_once 'vendor/foxFW/FoxFWBuild.php';
 require_once 'vendor/foxFW/FoxFWKernel.php';
+
 //FoxFWKernel::scriptTimeStart();
-FoxFWKernel::build( './config.json', './cache/config.json' );
+$config = FoxFWBuild::build( './config.json', './cache/config.json' );
+FoxFWKernel::build( $config );
 //FoxFWKernel::scriptTimeStop();

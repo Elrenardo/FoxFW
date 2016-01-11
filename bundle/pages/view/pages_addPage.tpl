@@ -52,7 +52,7 @@
 		<div class="form-group" style="display:none;">
 			<b>Cache Page:</b><br/>
 			<input type="text" class="form-control" name="path" class="form-control" 
-			value="web/page/" 
+			value="{{ getDefine('_WEB') }}" 
 			style="width:100%;">
 		</div>
 
@@ -133,7 +133,7 @@
 		{% if data is empty %}
 			{{ controller("Upload_files#view") }}
 		{% else %}
-			{{ controller("Upload_files#viewEdit", 'web/page/'~data.url~'/' ) }}
+			{{ controller("Upload_files#viewEdit", getDefine('_WEB')~'page/'~data.url~'/' ) }}
 		{% endif %}
 	</div>
 

@@ -23,7 +23,7 @@ class Controller_document
     		$_SESSION['foxfw_document_path'] = '';
 
     	FoxFWKernel::addVendor('foxFW/FoxFWUrl.php');
-		$this->path = new FoxFWUrl( 'web/document/', $_SESSION['foxfw_document_path'] );
+		$this->path = new FoxFWUrl( _WEB.'document/', $_SESSION['foxfw_document_path'] );
 
 		if( !is_dir( _WEB.'document'))
 			mkdir( _WEB.'document', 0755, true );
