@@ -2,9 +2,9 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 30/10/2015
-Update  : 03/11/2015
+Update  : 12/01/2016
 Licence : © Copyright
-Version : 1.1
+Version : 1.2
 -------------------------
 */
 class Controller_carousel
@@ -19,7 +19,7 @@ class Controller_carousel
     {
     	$path = Controller_carousel::getPathCarousel();
     	if( !is_dir( $path ))
-    		mkdir('web/carousel', 0777, true );
+    		mkdir( _WEB.'carousel', 0755, true );
     }
 
     //--------------------------------------------------------------------------------
