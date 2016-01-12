@@ -81,6 +81,7 @@ class Controller_PanelAdmin
 		foreach ($menu as $key => $value)
 		{
 			//FoxFWKernel::debug( $value['panel'] );
+			if( !empty( $value['panel'] ))
 			if( isset( $menu[ $key ]['role']))
 			{
 				if( $GLOBALS['User']->isRole( $menu[ $key ]['role'] ))

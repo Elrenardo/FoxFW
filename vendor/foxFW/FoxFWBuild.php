@@ -1,15 +1,14 @@
 <?php
 /*
 	::FoxFWBuild::
-	V1.00
 */
 
 /*--------
 By      : Teysseire Guillaume
 Date    : 05/01/2016
-Update  : 05/01/2016
+Update  : 12/01/2016
 Licence : © Copyright
-Version : 1.00
+Version : 1.01
 -------------------------
 */
 
@@ -40,27 +39,32 @@ class FoxFWBuild
 
 		//-------------------------------------------------------
 
-		//recherche configuration des bundles
+		//recherche les bundles disponible si il ne sont pas précisé
 		if( !isset($config['Bundle']))
 		{
 			$config['Bundle'] = [];
+			
 			$bundle_url       = $config['Define']['_BUNDLE'];
-
 			$bundle = scandir( $bundle_url );
-			//création de la configuration
 			foreach ($bundle as $key => $value)
 			if( $value != '.' )
 			if( $value != '..' )
-			{
 				$config['Bundle'][ $value ] = $bundle_url.$value.'/';
+		}
 
-				$file = $bundle_url.$value.'/config.json';
-				if( file_exists( $file ) )
-				{
-					//chargement et fusion de la configuration
-					$data   = json_decode( file_get_contents( $file ),true);
-					$config = FoxFWKernel::merge_object( $config, $data );
-				}
+		//chargement de la configuration des bundles
+		$bundle_url       = $config['Define']['_BUNDLE'];
+		$bundle = scandir( $bundle_url );
+		foreach ($bundle as $key => $value)
+		if( $value != '.' )
+		if( $value != '..' )
+		{
+			$file = $bundle_url.$value.'/config.json';
+			if( file_exists( $file ) )
+			{
+				//chargement et fusion de la configuration
+				$data   = json_decode( file_get_contents( $file ),true);
+				$config = FoxFWKernel::merge_object( $config, $data );
 			}
 		}
 

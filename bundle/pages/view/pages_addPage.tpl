@@ -66,7 +66,7 @@
 		<div class="form-group">
 			<b>Template de la page:</b><br/>
 			<input type="text" class="form-control" name="twig" class="form-control" 
-			value="{% if data.path is not empty %}{{ data.path }}{% else %}pages_view{% endif %}" 
+			value="{% if data.twig is not empty %}{{ data.twig }}{% else %}pages_view{% endif %}" 
 			style="width:100%;">
 		</div>
 
