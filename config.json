@@ -5,7 +5,7 @@
 		"_VENDOR"  : "vendor/",
 		"_WEB"     : "home/web/",
 		"_CACHE"   : "cache/",
-		"_MBUNDLE" : "home/"
+		"_HOME"    : "home/"
 	},
 
 	"Require":

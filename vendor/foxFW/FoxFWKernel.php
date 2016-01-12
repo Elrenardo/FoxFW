@@ -373,7 +373,7 @@ class FoxFWKernel
 		if( $tab[0] != 'MasterBundle' )
 	    	return FoxFWKernel::path( _BUNDLE.$tab[0].'/web/'.$tab[1] );
 	    else
-	    	return FoxFWKernel::path( _MBUNDLE.'web/'.$tab[1] );
+	    	return FoxFWKernel::path( _HOME.'web/'.$tab[1] );
 	}
 
 	//--------------------------------------------------------------------------------

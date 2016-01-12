@@ -65,8 +65,8 @@ class FoxFWBuild
 		}
 
 		//ajout configuration bundle home
-		$file = $config['Define']['_MBUNDLE'].'config.json';
-		$config['Bundle']['MasterBundle'] = $config['Define']['_MBUNDLE'];
+		$file = $config['Define']['_HOME'].'config.json';
+		$config['Bundle']['MasterBundle'] = $config['Define']['_HOME'];
 		if( file_exists( $file ))
 		{
 			//chargement et fusion de la configuration
