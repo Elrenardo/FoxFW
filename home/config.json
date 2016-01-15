@@ -1,6 +1,6 @@
 {
 	"Route":
 	{
-		"site" : "../home/route.json"
+		"site" : "home/route.json"
 	}
 }

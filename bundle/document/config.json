@@ -1,6 +1,6 @@
 {
 	"Route":
 	{
-		"Document" : "document/routeADMIN.json"
+		"Document" : "bundle/document/routeADMIN.json"
 	}
 }

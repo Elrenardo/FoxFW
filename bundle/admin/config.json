@@ -1,7 +1,7 @@
 {
 	"Route":
 	{
-		"panelAdmin":"admin/routeADMIN.json"
+		"panelAdmin":"bundle/admin/routeADMIN.json"
 	},
 
 	"Admin":

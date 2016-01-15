@@ -1,7 +1,7 @@
 {
 	"Route":
 	{
-		"pages"    : "pages/route.json",
-		"pagesADM" : "pages/routeADMIN.json"
+		"pages"    : "bundle/pages/route.json",
+		"pagesADM" : "bundle/pages/routeADMIN.json"
 	}
 }

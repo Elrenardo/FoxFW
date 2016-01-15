@@ -50,8 +50,13 @@ class Upload_files
 		//lister repertoire
 		$files = Upload_files::getFilesDir( $path );
 
+		FoxFWKernel::debug( $GLOBALS['Config']['Upload_files']['max_upload_file'] );
 		//affichage
-		return $GLOBALS['Twig']->render( FoxFWKernel::getView('upload_files_view'),array('upload_buffer'=>$files));
+		return $GLOBALS['Twig']->render( FoxFWKernel::getView('upload_files_view'),
+			array(
+				'upload_buffer'=>$files, 
+				'max_upload_file'=>$GLOBALS['Config']['Upload_files']['max_upload_file']
+				));
 	}
 
 	//--------------------------------------------------------------------------------
@@ -76,7 +81,9 @@ class Upload_files
 		//affichage
 		return $GLOBALS['Twig']->render( FoxFWKernel::getView('upload_files_view'),array(
 			'upload_buffer'=>$files,
-			'path_dir'=> $dir ));
+			'path_dir'=> $dir,
+			'max_upload_file'=>FoxFWFile::convertFileSize($GLOBALS['Config']['Upload_files']['max_upload_file'],'ko').' Ko'
+			));
 	}
 
 	//--------------------------------------------------------------------------------
@@ -93,8 +100,7 @@ class Upload_files
 		if( !is_dir( $path ))
 			mkdir( $path, 0755, true );
 
-		FoxFWFile::uploadFile( $path );
-		return '';
+		return FoxFWFile::uploadFile( $path, $GLOBALS['Config']['Upload_files']['max_upload_file'] );
 	}
 
 	//--------------------------------------------------------------------------------

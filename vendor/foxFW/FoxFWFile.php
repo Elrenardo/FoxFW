@@ -150,9 +150,9 @@ class FoxFWFile
 	//--------------------------------------------------------------------------------
 	//
 	//
-	//
+	//Ne plus utilisé !
 	//--------------------------------------------------------------------------------
-	public static function sizeFile( $file )
+	/*public static function sizeFile( $file )
 	{
 		$taille = filesize( $file );
 
@@ -169,5 +169,53 @@ class FoxFWFile
 			$taille="-";
 
 		return $taille; 
+	}*/
+
+    //--------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------
+	//
+	//
+	//
+	//--------------------------------------------------------------------------------
+	public static function poidsDossier($dossier)
+	{
+	    $dir = openDir($dossier);
+	    $poids = 0;
+	    while($f = readdir($dir))
+	    {
+	        if($f!='.'&&$f!='..')
+	        {
+	            if(is_dir($dossier.$f))
+	                $poids += poidsDossier($dossier.$f.'/');
+	            else
+	                $poids += filesize($dossier.$f);    
+	        }
+	    }
+	    return $poids;
+	}
+
+    //--------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------
+	//
+	//
+	//
+	//--------------------------------------------------------------------------------
+	public static function convertFileSize($bytes, $to='mo', $virgule = 2)
+	{
+	    switch($to)
+	    {
+	        case 'ko':
+	            return round(($bytes / 1024), $virgule);
+	        break;
+	        case 'mo':
+	            return round(($bytes / 1024)/1024, $virgule);
+	        break;
+	        case 'go':
+	            return round((($bytes / 1024)/1024)/1024, $virgule);
+	        break;
+	        case 'to':
+	            return round(((($bytes / 1024)/1024)/1024)/1024, $virgule);
+	        break;
+	    }
 	}
 };

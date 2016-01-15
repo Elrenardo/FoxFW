@@ -11,7 +11,10 @@
 			{% for i,key in path_dir %}
 			<tr id="upload_files_liste{{ compte }}">
 				<td><img src="{{ path(key) }}" alt="prevu img" width="64" height="64" style="margin-right:30px;"/></td>
-				<td><a href="{{ path(key) }}" target="_blank">{{ i }}</a></td>
+				<td>
+					<a href="{{ path(key) }}" target="_blank">{{ i }}</a>
+					<input type="text" style="width:100%;text-align:center;"  value="{{ path(path~i) }}" class="form-control" onClick="this.select();"/>
+				</td>
 				<td>
 					<div onClick="remove_elem_buffer( {{ compte }}, '{{ router('Upload_files_remove', key ) }}' )">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red;margin-left:30px;cursor: pointer;"></span>
@@ -23,7 +26,7 @@
 
 		</table>
 	{% endif %}
-
+	<p>Taille maximum fichier: {{ max_upload_file }}</p>
 	<form action="{{ router('Upload_files_upload') }}" class="dropzone"></form>
 
 	<div>

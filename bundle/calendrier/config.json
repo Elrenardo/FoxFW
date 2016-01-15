@@ -1,8 +1,8 @@
 {
 	"Route":
 	{
-		"calendrier"   :"calendrier/route.json",
-		"calendrierAdm":"calendrier/routeADMIN.json"
+		"calendrier"   :"bundle/calendrier/route.json",
+		"calendrierAdm":"bundle/calendrier/routeADMIN.json"
 	},
 	
 	"Calendrier":

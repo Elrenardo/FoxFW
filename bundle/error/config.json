@@ -1,6 +1,6 @@
 {
 	"Route":
 	{
-		"error"    : "error/route.json"
+		"error"    : "bundle/error/route.json"
 	}
 }

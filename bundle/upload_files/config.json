@@ -1,11 +1,13 @@
 {
 	"Route":
 	{
-		"Upload_files" : "upload_files/routeADMIN.json"
+		"Upload_files" : "bundle/upload_files/routeADMIN.json"
 	},
 
 	"Upload_files":
 	{
-		"path_buffer":"buffer/"
+		"path_buffer":"buffer/",
+		"max_upload_file": 102400,
+		"max_upload" : 10485760
 	}
 }

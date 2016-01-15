@@ -509,7 +509,7 @@ class FoxFWKernel
 		{
 			foreach ($tab as $key => $value)
 			{
-				$data = FoxFWFile::readJson( _BUNDLE.$value );
+				$data = FoxFWFile::readJson( $value );
 				foreach ($data as $_key => $_value)
 					$ret[$_key] = $_value;
 			}

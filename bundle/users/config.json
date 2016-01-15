@@ -1,9 +1,9 @@
 {
 	"Route":
 	{
-		"users"    : "users/route.json",
-		"usersMB"  : "users/routeMEMBRE.json",
-		"usersADM" : "users/routeADMIN.json"
+		"users"    : "bundle/users/route.json",
+		"usersMB"  : "bundle/users/routeMEMBRE.json",
+		"usersADM" : "bundle/users/routeADMIN.json"
 	},
 	
 	"Roles":
