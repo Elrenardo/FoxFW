@@ -1,15 +1,14 @@
 <?php
 /*
 	::FoxFWKernel::
-	V4.02
 */
 
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 30/12/2015
+Update  : 18/01/2016
 Licence : © Copyright
-Version : 4.02
+Version : 4.03
 -------------------------
 */
 
@@ -370,7 +369,8 @@ class FoxFWKernel
 		if( empty($tab[1]) )
 			return '#';
 
-		if( $tab[0] != 'MasterBundle' )
+		//path avec detection du bundle
+		if( $tab[0] != $GLOBALS['Config']['FoxFW']['HomeBundle'] )
 	    	return FoxFWKernel::path( _BUNDLE.$tab[0].'/web/'.$tab[1] );
 	    else
 	    	return FoxFWKernel::path( _HOME.'web/'.$tab[1] );

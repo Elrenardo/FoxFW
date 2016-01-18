@@ -16,7 +16,7 @@
 
 
 {% block css %}
-	<link rel="stylesheet" href="{{ bundlePath('MasterBundle#design.css') }}"/>
+	<link rel="stylesheet" href="{{ bundlePath('home#design.css') }}"/>
 
 	<!--
 	//Facebook 
@@ -27,7 +27,7 @@
 {% endblock %}
 
 {% block js %}
-	<script type="text/javascript" src="{{ bundlePath('MasterBundle#js.js') }}"></script>
+	<script type="text/javascript" src="{{ bundlePath('home#js.js') }}"></script>
 {% endblock %}
 
 

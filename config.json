@@ -22,7 +22,7 @@
 	{
 		"connect" : "mysql:host=localhost;dbname=foxfw",
 		"user"    : "root",
-		"pass"    : ""
+		"pass"    : "root"
 	},
 
 	"AltoRouter":
@@ -42,6 +42,7 @@
 		"view_error"       : "bundle/error/view/error_viewError.tpl",
 		"log_output"       : "log.txt",
 		"php_error"        : true,
-		"cache"            : false
+		"cache"            : false,
+		"HomeBundle"       : "home"
 	}
 }

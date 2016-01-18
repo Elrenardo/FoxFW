@@ -141,7 +141,7 @@ class Controller_page
 		FoxFWFile::delTree( _WEB.'page/'.$id_url );
 
 		//routage sur la liste des pages
-		FoxFWKernel::loadRouter('Page_viewListeAllPage');
+		FoxFWKernel::loadRouter('Page_viewListeAdminPage');
 	}
 
 	//--------------------------------------------------------------------------------

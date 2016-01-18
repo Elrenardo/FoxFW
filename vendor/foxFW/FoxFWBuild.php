@@ -6,9 +6,9 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 05/01/2016
-Update  : 12/01/2016
+Update  : 18/01/2016
 Licence : © Copyright
-Version : 1.01
+Version : 1.02
 -------------------------
 */
 
@@ -70,7 +70,7 @@ class FoxFWBuild
 
 		//ajout configuration bundle home
 		$file = $config['Define']['_HOME'].'config.json';
-		$config['Bundle']['MasterBundle'] = $config['Define']['_HOME'];
+		$config['Bundle']['home'] = $config['Define']['_HOME'];
 		if( file_exists( $file ))
 		{
 			//chargement et fusion de la configuration
@@ -112,20 +112,20 @@ class FoxFWBuild
 		}
 		//-------------------------------------------------------
 		//Surcharge des bundles par le bundle master
-		if( isset($config['MasterBundle']))
+		if( isset($config['home']))
 		{
 			//Detections des controllers
-			$tab = $searchAddFile( $config['MasterBundle'].'controller/' );
+			$tab = $searchAddFile( $config['home'].'controller/' );
 			foreach ($tab as $key => $value)
 				$config['Controller'][ $key ] = $value;
 
 			//Detection des models
-			$tab = $searchAddFile( $config['MasterBundle'].'model/' );
+			$tab = $searchAddFile( $config['home'].'model/' );
 			foreach ($tab as $key => $value)
 				$config['Model'][ $key ] = $value;
 			
 			//Detection des view
-			$tab = $searchAddFile( $config['MasterBundle'].'view/' );
+			$tab = $searchAddFile( $config['home'].'view/' );
 			foreach ($tab as $key => $value)
 				$config['View'][ $key ] = $value;
 		}

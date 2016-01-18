@@ -20,8 +20,8 @@
 				<th>Type</th>
 				<th>Date</th>
 
-					<th>Supprimer</th>
 					<th>Modifier</th>
+					<th>Supprimer</th>
 			</tr>
 		{% for i in liste %}
 				<tr>
