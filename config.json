@@ -32,7 +32,7 @@
 
 	"Addon":
 	{
-		"foxfwTwig": "../vendor/foxFW/addons/addon_twig.php"
+		"foxfwTwig": "vendor/foxFW/addons/addon_twig.php"
 	},
 
 	"FoxFW":

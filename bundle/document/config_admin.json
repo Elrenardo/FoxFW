@@ -1,0 +1,7 @@
+{
+	"Editeur document":
+	{
+		"router"   :"Document_view",
+		"icon"     :"glyphicon-plus"
+	}
+}

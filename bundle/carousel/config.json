@@ -3,5 +3,10 @@
 	{
 		"carousel"   :"bundle/carousel/route.json",
 		"carouselADM":"bundle/carousel/routeADMIN.json"
+	},
+
+	"Admin":
+	{
+		"Carousel":"bundle/carousel/config_admin.json"
 	}
 }

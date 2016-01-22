@@ -3,5 +3,10 @@
 	{
 		"pages"    : "bundle/pages/route.json",
 		"pagesADM" : "bundle/pages/routeADMIN.json"
+	},
+
+	"Admin":
+	{
+		"Pages":"bundle/pages/config_admin.json"
 	}
 }

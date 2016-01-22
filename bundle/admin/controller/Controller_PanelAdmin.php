@@ -37,72 +37,6 @@ class Controller_PanelAdmin
 	//
 	//
 	//--------------------------------------------------------------------------------
-    public function viewMenu( $params )
-	{
-		//verifier si le cache menu admin existe
-		$url = _CACHE.$GLOBALS['Config']['Admin']['cache'];
-		if( !file_exists( $url ) )
-		{
-			//trouver tout les controller en analisant les routes
-			$controller = array();
-			$menu       = array();
-
-			//construction corps
-			foreach ($GLOBALS['Route'] as $key => $value)
-			{
-				$tab = explode('#',$value->controller ); 
-				if( !in_array($tab[0], $controller) )
-				if( isset($GLOBALS['Config']['Controller'][ $tab[0] ]))
-				if( file_exists( $GLOBALS['Config']['Controller'][ $tab[0] ] ))
-				{
-					array_push( $controller, $tab[0] );
-					
-					//include le controller et recupérer le tableau du menu
-					require_once $GLOBALS['Config']['Controller'][ $tab[0] ];
-					$c = new $tab[0]();
-
-					if( method_exists( $c, $GLOBALS['Config']['Admin']['method'] ))
-					{
-						$buffer = $c->{ $GLOBALS['Config']['Admin']['method'] }();//method admin
-						if( $buffer != NULL )
-							array_push( $menu, $buffer );
-					}
-					unset( $c );
-				}
-			}
-			//si cache actif
-			if( $GLOBALS['Config']['FoxFW']['cache'] )
-				file_put_contents( $url, json_encode( $menu ) );
-		}
-		else
-			$menu = json_decode( file_get_contents( $url ), true);
-
-		//recupéré le contenu du menu et verifier les roles
-		foreach ($menu as $key => $value)
-		{
-			//FoxFWKernel::debug( $value['panel'] );
-			if( !empty( $value['panel'] ))
-			if( isset( $menu[ $key ]['role']))
-			{
-				if( $GLOBALS['User']->isRole( $menu[ $key ]['role'] ))
-					$menu[ $key ]['panel'] = $GLOBALS['Twig']->render( $value['panel'], array() );
-				else
-					unset($menu[ $key ]);
-			}
-			else
-				$menu[ $key ]['panel'] = $GLOBALS['Twig']->render( $value['panel'], array() );
-		}
-
-		//compilation de la vue
-		return $GLOBALS['Twig']->render( FoxFWKernel::getView('pattern_admin_menu') ,array('menu'=>$menu ));
-	}
-
-	//--------------------------------------------------------------------------------
-	//--------------------------------------------------------------------------------
-	//
-	//
-	//
-	//--------------------------------------------------------------------------------
 	static public function viewPanelAdmin()
 	{
 		$ret = array(
@@ -112,6 +46,25 @@ class Controller_PanelAdmin
 			'panel'   => FoxFWKernel::getView('admin_panelAdmin')
 		);
 		return $ret;
+	}
+
+	//--------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------
+	//
+	//
+	//
+	//--------------------------------------------------------------------------------
+    public function viewMenu( $params )
+	{
+		$data = array();
+		foreach ($GLOBALS['config']['Admin'] as $key => $value)
+		{
+			$tab = FoxFWFile::readJson( $value );
+			$data[ $key ] = FoxFWFile::readJson( $value );
+		}
+
+		return $GLOBALS['Twig']->render( FoxFWKernel::getView('pattern_admin_menu'),
+			array('menu'=>$data));
 	}
 
 	//--------------------------------------------------------------------------------
@@ -148,6 +101,7 @@ class Controller_PanelAdmin
 	{
 		$config = json_decode(json_encode($GLOBALS['Config']),true);
 
+		//copier le phpinfo() dans une variable
 		ob_start();
 			phpinfo();
 			$phpinfo = ob_get_contents();

@@ -145,8 +145,8 @@ class FoxFWKernel
 		//extension du Kernel !
 		if( isset( $GLOBALS['Config']['Addon'] ))
 		foreach ($GLOBALS['Config']['Addon'] as $key => $value)
-			if( file_exists( _BUNDLE.$value ))
-				require_once _BUNDLE.$value;
+			if( file_exists( $value ))
+				require_once $value;
 
 		//-------------------------------------------------------------
 		//traitement de la page
@@ -160,7 +160,7 @@ class FoxFWKernel
 			$etat = FoxFWKernel::controller( $match['target'], $match['params'] );
 			//si pas d'erreur
 			if( $etat == 200 )
-				return;
+				return true;
 		}
 		else
 			$etat = 401;
@@ -168,11 +168,12 @@ class FoxFWKernel
 		//Erreur controller
 		$error = $GLOBALS['Config']['FoxFW']['controller_error'].'#e'.$etat;
 		if( FoxFWKernel::controller( $error, array() ) == 200 )
-			return;
+			return true;
 
 		//Default error serveur
 		header('HTTP/1.0 500 Not Found');
 		echo 'Erreur interne du serveur !';
+		return false;
 	}
 
 	//--------------------------------------------------------------------------------
@@ -185,21 +186,9 @@ class FoxFWKernel
 	{
 		$controller = explode('#', $controller );
 
-		if( !isset( $GLOBALS['Config']['Controller'][ $controller[0] ] ))
-		{
-			echo 'Error config controller: '.$controller[0].'<br/>';
-			return 500;
-		}
-
 		//inclure le controller
-		if( !class_exists( $controller[0] ))
-		{
-			$file = $GLOBALS['Config']['Controller'][ $controller[0] ];
-			if( file_exists( $file ))
-				require_once $file;
-			else
-				return 500;
-		}
+		if( !FoxFWKernel::addController( $controller[0] ))
+			return 500;
 
 		//création et execution du controller
 		$obj_controller = new $controller[0]();
@@ -241,8 +230,8 @@ class FoxFWKernel
 		}
 
 		//L'adresse de la page (si elle existe) qui a conduit le client à la page courante
-		if(isset($_SERVER['HTTP_REFERER'])
-		&& $_SERVER['HTTP_REFERER']!=''
+		if(isset($_SERVER['HTTP_REFERER']))
+		if( $_SERVER['HTTP_REFERER'] != ''
 		&& substr($_SERVER['HTTP_REFERER'], 7, strlen($_SERVER['SERVER_NAME'])) != $_SERVER['SERVER_NAME'])
 		{
 			$_POST = array();
@@ -439,7 +428,7 @@ class FoxFWKernel
 			else
 				die('Controller lost: '.$controller );
 		}
-		return false;
+		return true;
 	}
 	
 	//--------------------------------------------------------------------------------

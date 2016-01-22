@@ -3,13 +3,22 @@
 {% block title %}Document {{ parent() }}{% endblock %}
 
 {% block head_base %}
-	<script src="{{ path('_vendor/codemirror-5.5/lib/codemirror.js') }}"></script>
-	<script src="{{ path('_vendor/codemirror-5.5/mode/xml/xml.js') }}"></script>
-	<script src="{{ path('_vendor/codemirror-5.5/mode/javascript/javascript.js') }}"></script>
-	<script src="{{ path('_vendor/codemirror-5.5/mode/htmlmixed/htmlmixed.js') }}"></script>
-	<script src="{{ path('_vendor/codemirror-5.5/addon/edit/matchbrackets.js') }}"></script>
+	<link rel="stylesheet" href="{{ path('vendor/codemirror-5.5/lib/codemirror.css') }}">
+	<script src="{{ path('vendor/codemirror-5.5/lib/codemirror.js') }}"></script>
 
-	<link rel="stylesheet" href="{{ path('_vendor/codemirror-5.5/lib/codemirror.css') }}">
+
+	<link rel="stylesheet" href="{{ path('vendor/codemirror-5.5/theme/monokai.css') }}">
+	<script src="{{ path('vendor/codemirror-5.5/keymap/sublime.js') }}"></script>
+
+	<script src="{{ path('vendor/codemirror-5.5/mode/xml/xml.js') }}"></script>
+	<script src="{{ path('vendor/codemirror-5.5/mode/css/css.js') }}"></script>
+	<script src="{{ path('vendor/codemirror-5.5/mode/php/php.js') }}"></script>
+	<script src="{{ path('vendor/codemirror-5.5/mode/javascript/javascript.js') }}"></script>
+	<script src="{{ path('vendor/codemirror-5.5/mode/htmlmixed/htmlmixed.js') }}"></script>
+	<script src="{{ path('vendor/codemirror-5.5/addon/edit/matchbrackets.js') }}"></script>
+
+	<script src="{{ path('vendor/codemirror-5.5/addon/display/fullscreen.js') }}"></script>
+	<link rel="stylesheet" href="{{ path('vendor/codemirror-5.5/addon/display/fullscreen.css') }}">
 
 	<script src="{{ bundlePath('upload_files#dropzone.js') }}"></script>
 	<link rel="stylesheet" href="{{ bundlePath('upload_files#dropzone.css') }}">
@@ -90,7 +99,8 @@
 				(document.type =='html')  or 
 				(document.type =='css') or 
 				(document.type =='js')  or 
-				(document.type =='twig') or 
+				(document.type =='tpl') or 
+				(document.type =='json') or 
 				(document.type =='php') %}
 					{% set type_ok = true %}
 						{% include getView('Document_editFile') %}

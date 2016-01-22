@@ -6,8 +6,7 @@
 
 	"Admin":
 	{
-		"cache"  : "panelAdmin.html",
-		"method" : "viewPanelAdmin"
+		"Configuration":"bundle/admin/config_admin.json"
 	},
 
 	"Roles":

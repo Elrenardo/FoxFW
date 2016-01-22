@@ -23,10 +23,7 @@ class Controller_document
     		$_SESSION['foxfw_document_path'] = '';
 
     	FoxFWKernel::addVendor('foxFW/FoxFWUrl.php');
-		$this->path = new FoxFWUrl( _WEB.'document/', $_SESSION['foxfw_document_path'] );
-
-		if( !is_dir( _WEB.'document'))
-			mkdir( _WEB.'document', 0755, true );
+		$this->path = new FoxFWUrl( _HOME, $_SESSION['foxfw_document_path'] );
     }
 
     //--------------------------------------------------------------------------------
@@ -119,14 +116,13 @@ class Controller_document
 				case 'html':
 				case 'js':
 				case 'css':
-				case 'twig':
+				case 'json':
+				case 'tpl':
 				case 'php':
 					$document['body'] = file_get_contents( $document['path'] );
 				break;
 			}
 		}
-
-
 
 		//lister repertoire
 		$files = array();
@@ -146,11 +142,13 @@ class Controller_document
 
 		//render
 		return $GLOBALS['Twig']->render( FoxFWKernel::getView('Document_view') ,
-		array('path'=>$this->path->get(),
-		 'file'=>$files,
-		 'dir'=>$dirs,
-		 'rep'=>$rep,
-		 'document'=>$document ));
+		array(
+			'path'     => $this->path->get(),
+		 	'file'     => $files,
+		 	'dir'      => $dirs,
+		 	'rep'      => $rep,
+		 	'document' => $document
+		));
 	}
 
 	//--------------------------------------------------------------------------------
