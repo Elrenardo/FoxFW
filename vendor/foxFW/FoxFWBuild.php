@@ -110,26 +110,26 @@ class FoxFWBuild
 			//Detection des view
 			$config['View']       += $searchAddFile( $value.'view/' );
 		}
+
 		//-------------------------------------------------------
 		//Surcharge des bundles par le bundle master
-		if( isset($config['home']))
+		if( isset($config['Define']['_HOME']))
 		{
 			//Detections des controllers
-			$tab = $searchAddFile( $config['home'].'controller/' );
+			$tab = $searchAddFile( $config['Define']['_HOME'].'controller/' );
 			foreach ($tab as $key => $value)
 				$config['Controller'][ $key ] = $value;
 
 			//Detection des models
-			$tab = $searchAddFile( $config['home'].'model/' );
+			$tab = $searchAddFile( $config['Define']['_HOME'].'model/' );
 			foreach ($tab as $key => $value)
 				$config['Model'][ $key ] = $value;
 			
 			//Detection des view
-			$tab = $searchAddFile( $config['home'].'view/' );
+			$tab = $searchAddFile( $config['Define']['_HOME'].'view/' );
 			foreach ($tab as $key => $value)
 				$config['View'][ $key ] = $value;
 		}
-		
 		/*$tab = $searchAddFile( $path ); //Marche pas: $config['View'] += $searchAddFile( $path );
 		foreach ($tab as $key => $value)
 			$config['View'][ $key ] = $value;*/

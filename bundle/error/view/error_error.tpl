@@ -1,6 +1,6 @@
 {% extends getView('pattern_index') %}
 
-{% block title %}Erreur 404 - {{ parent() }}{% endblock %}
+{% block title %}Erreur {{error}} - {{ parent() }}{% endblock %}
 
 {% block container %}
 <div class="container">
