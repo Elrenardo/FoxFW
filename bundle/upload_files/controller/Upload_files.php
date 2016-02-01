@@ -50,12 +50,11 @@ class Upload_files
 		//lister repertoire
 		$files = Upload_files::getFilesDir( $path );
 
-		FoxFWKernel::debug( $GLOBALS['Config']['Upload_files']['max_upload_file'] );
 		//affichage
 		return $GLOBALS['Twig']->render( FoxFWKernel::getView('upload_files_view'),
 			array(
 				'upload_buffer'=>$files, 
-				'max_upload_file'=>$GLOBALS['Config']['Upload_files']['max_upload_file']
+				'max_upload_file'=>FoxFWFile::convertFileSize($GLOBALS['Config']['Upload_files']['max_upload_file'],'ko').' Ko'
 				));
 	}
 
