@@ -6,6 +6,6 @@
 
 	"Admin":
 	{
-		"Docmument":"bundle/document/config_admin.json"
+		"Document":"bundle/document/config_admin.json"
 	}
 }
