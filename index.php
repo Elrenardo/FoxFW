@@ -12,6 +12,6 @@ require_once 'vendor/foxFW/FoxFWBuild.php';
 require_once 'vendor/foxFW/FoxFWKernel.php';
 
 //FoxFWKernel::scriptTimeStart();
-$config = FoxFWBuild::build( './config.json', './cache/config.json' );
+$config = FoxFWBuild::build( './home/config.json', './cache/config.json' );
 FoxFWKernel::build( $config );
 //FoxFWKernel::scriptTimeStop();

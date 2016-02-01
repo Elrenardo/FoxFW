@@ -1,4 +1,51 @@
 {
+	"Define":
+	{
+		"_BUNDLE"  : "bundle/",
+		"_VENDOR"  : "vendor/",
+		"_WEB"     : "home/web/",
+		"_CACHE"   : "cache/",
+		"_HOME"    : "home/"
+	},
+
+	"Require":
+	{
+		"AltoRouter" : "altorouter/AltoRouter.php",
+		"Twig"       : "Twig/Autoloader.php",
+		"RedBean"    : "RedBeanPHP4.2.3/rb.php",
+		"FoxFwFile"  : "foxFW/FoxFWFile.php",
+		"FoxFWCrypte": "foxFW/FoxFWCrypte.php",
+		"FoxFWUsers" : "foxFW/FoxFWUsers.php"
+	},
+
+	"RedBean":
+	{
+		"connect" : "mysql:host=localhost;dbname=foxfw",
+		"user"    : "root",
+		"pass"    : ""
+	},
+
+	"AltoRouter":
+	{
+		"BasePath"  : "git/FoxFW/"
+	},
+
+	"Addon":
+	{
+		"foxfwTwig": "vendor/foxFW/addons/addon_twig.php"
+	},
+
+	"FoxFW":
+	{
+		"email"            : "contact@helloWorld.fr",
+		"controller_error" : "Controller_error",
+		"view_error"       : "bundle/error/view/error_viewError.tpl",
+		"log_output"       : "log.txt",
+		"php_error"        : true,
+		"cache"            : false,
+		"HomeBundle"       : "home"
+	},
+
 	"Route":
 	{
 		"site" : "home/route.json"
