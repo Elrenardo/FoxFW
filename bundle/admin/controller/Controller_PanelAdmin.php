@@ -37,23 +37,6 @@ class Controller_PanelAdmin
 	//
 	//
 	//--------------------------------------------------------------------------------
-	static public function viewPanelAdmin()
-	{
-		$ret = array(
-			'titre'  => 'Configuration',
-			'router' => '#',
-			'role'   => 'CONFIG',
-			'panel'   => FoxFWKernel::getView('admin_panelAdmin')
-		);
-		return $ret;
-	}
-
-	//--------------------------------------------------------------------------------
-	//--------------------------------------------------------------------------------
-	//
-	//
-	//
-	//--------------------------------------------------------------------------------
     public function viewMenu( $params )
 	{
 		$data = array();
