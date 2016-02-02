@@ -6,9 +6,9 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 18/01/2016
+Update  : 02/02/2016
 Licence : © Copyright
-Version : 4.03
+Version : 4.04
 -------------------------
 */
 
@@ -354,15 +354,26 @@ class FoxFWKernel
 	//--------------------------------------------------------------------------------
 	public static function bundlePath( $path = '' )
 	{
-		$tab = explode('#', $path);
-		if( empty($tab[1]) )
-			return '#';
+		$ret = '#';
+		if( !isset( $_SESSION['_BP'.$path] ))
+		{
+			$tab = explode('#', $path);
+			if( empty($tab[1]) )
+				return '#';
 
-		//path avec detection du bundle
-		if( $tab[0] != $GLOBALS['Config']['FoxFW']['HomeBundle'] )
-	    	return FoxFWKernel::path( _BUNDLE.$tab[0].'/web/'.$tab[1] );
-	    else
-	    	return FoxFWKernel::path( _HOME.'web/'.$tab[1] );
+			//path avec detection du bundle
+			if( $tab[0] != $GLOBALS['Config']['FoxFW']['HomeBundle'] )
+		    	$ret = FoxFWKernel::path( _BUNDLE.$tab[0].'/web/'.$tab[1] );
+		    else
+		    	$ret = FoxFWKernel::path( _HOME.'web/'.$tab[1] );
+
+
+		    $_SESSION[ '_BP'.$path ] = $ret;
+		}
+		else
+			$ret = $_SESSION[ '_BP'.$path ];
+
+		return $ret;
 	}
 
 	//--------------------------------------------------------------------------------

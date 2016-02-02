@@ -52,7 +52,7 @@
 		<div class="form-group" style="display:none;">
 			<b>Cache Page:</b><br/>
 			<input type="text" class="form-control" name="path" class="form-control" 
-			value="{{ getDefine('_WEB') }}" 
+			value="{{ getDefine('_WEB')~'page/' }}" 
 			style="width:100%;">
 		</div>
 
@@ -75,7 +75,7 @@
 				<b>Path:</b><br/>
 				<input type="text" 
 				class="form-control" style="width:100%;" name="auteur" 
-				value="{{ data.url }}" disabled="disabled">
+				value="{{ data.path }}" disabled="disabled">
 			</div>
 			<hr/>
 		{% endif%}
