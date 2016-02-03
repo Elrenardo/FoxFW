@@ -2,9 +2,9 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 24/09/2015
+Update  : 03/02/2016
 Licence : © Copyright
-Version : 1.0
+Version : 1.1
 -------------------------
 */
 class Controller_page

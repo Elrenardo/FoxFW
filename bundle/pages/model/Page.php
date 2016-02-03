@@ -2,13 +2,15 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 30/12/2015
+Update  : 03/02/2016
 Licence : © Copyright
-Version : 1.0
+Version : 1.1
 -------------------------
 */
 class Page
 {
+    static public $buffer_dir = 'page/';
+
 	public function __construct() 
     {
 
@@ -24,7 +26,7 @@ class Page
     {
     	$data =  R::load( 'page', $id );
         if(!empty($data))
-            $data['body'] = Page::getBody( $data['filename'] );
+            $data['body'] = Page::getBody( _WEB.Page::$buffer_dir.$data['filename'].'.html' );
         return $data;
     }
     //--------------------------------------------------------------------------------
@@ -37,7 +39,7 @@ class Page
     {
         $data = R::findOne( 'page', 'url=?', [ $url ] );
         if(!empty($data))
-            $data['body'] = Page::getBody( $data['filename'] );
+            $data['body'] = Page::getBody( _WEB.Page::$buffer_dir.$data['filename'].'.html' );
         return $data;
     }
 
@@ -74,19 +76,21 @@ class Page
     	$article->titre    = $data['titre'];
     	$article->tag      = $data['tag'];
     	$article->auteur   = $data['auteur'];
-    	$article->filename = ($data['path'].$buffer.'.html');
+    	$article->filename = $buffer;
         $article->type     = $data['type'];
         $article->twig     = $data['twig'];
         $article->img      = '';
         $article->date     = time();
 
+
         if( isset( $data['date'] ))
             $article->date = $data['date'];
 
         //création du fichier qui recevra le body
-        file_put_contents( $article->filename, $data['body'] );
-        if( !file_exists( $article->filename) )//si le fichier existe pas
-            die( 'Erreur Création fichier BODY !: '.$article->filename );
+        $filename = (_WEB.Page::$buffer_dir.$buffer.'.html');
+        file_put_contents( $filename, $data['body'] );
+        if( !file_exists( $filename) )//si le fichier existe pas
+            die( 'Erreur Création fichier BODY !: '.$filename );
 
         
         //telechargement de l'image
@@ -134,7 +138,7 @@ class Page
 
         //body
         if( isset($data['body']) )
-            file_put_contents( $article->filename, $data['body']);
+            file_put_contents( _WEB.Page::$buffer_dir.$article->filename.'.html', $data['body']);
         
         //image
         if( isset($data['img']))
@@ -162,7 +166,7 @@ class Page
         
         if(!empty( $data ))
         foreach ( $data as $key )
-            $key->body = Page::getBody( $key->filename );
+            $key->body = Page::getBody( _WEB.Page::$buffer_dir.$key->filename.'.html' );
 
         return $data;
     }
@@ -205,7 +209,7 @@ class Page
         //recuperer le body
         if(!empty( $data ))
         foreach( $data as $key )
-            $key->body = Page::getBody( $key->filename );
+            $key->body = Page::getBody( _WEB.Page::$buffer_dir.$key->filename.'.html' );
         return $data;
     }
 

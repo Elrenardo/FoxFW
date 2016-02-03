@@ -3,7 +3,7 @@
 {% block title %}Bienvenu sur {{ parent() }}{% endblock %}
 
 {% block head_base %}
-	<script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
+	<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
 {% endblock %}
 
 {% block container %}
@@ -47,13 +47,6 @@
 		<div class="form-group" style="display:none;">
 			<b>Id Page:</b><br/>
 			<input type="text" class="form-control" name="id" class="form-control" value="{{ data.id }}" style="width:100%;">
-		</div>
-
-		<div class="form-group" style="display:none;">
-			<b>Cache Page:</b><br/>
-			<input type="text" class="form-control" name="path" class="form-control" 
-			value="{{ getDefine('_WEB')~'page/' }}" 
-			style="width:100%;">
 		</div>
 
 		<div class="form-group">
