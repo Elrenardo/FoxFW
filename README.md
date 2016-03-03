@@ -1,9 +1,6 @@
 # ::FoxFW::
-Un petit framework que j'ai crée pour faire des sites webs pour mes projets.
-
-Il est basé sur un principe de "bundle" ( inspiré de Symphony2 ) avec une architectures MVC.
-le projet est composé de deux parties, la premiére ce trouve dans "_vendor/foxFW" qui est le kernel du site.
-le reste est une prêt configuration/architecutre pour créer un pattern de site plus rapide.
+( version 5 en dev )
+//TODO
 
 Il utilise les librairies suivantes:
 - [AltoRouter] (https://github.com/dannyvankooten/AltoRouter "AltoRouter")
@@ -36,43 +33,7 @@ Il utilise les librairies suivantes:
 
 
 # Bundle disponible
-
-> Admin
-
-Gestion du panneaux d'administration ( back end ) du site. Il rajoute une methode utilisable pour les controllers des bundles.
-```php	
-static public function viewPanelAdmin()
-{
-	$ret = array(
-		'titre'  => 'Configuration',
-		'router' => '#',
-		'role'   => 'CONFIG',
-		'panel'   => FoxFWKernel::getView('admin_panelAdmin')
-	);
-	return $ret;
-}
-```
-
-Calendrier
->Gestion d'un calendrier.
-
-Carousel
->Gestion d'un carousel.
-
-Document
->Gestion d'un repertoir pour stocker des documents sur l'espace site.
-
-Error
->Gestion des erreurs http ( 404, ... )
-
-Pages
->Gestion des pages & Articles pour les sites.
-
-Upload_files
->Gestion de l'upload de fichier vers le site
-
-Users
->Gestion des utilisateurs.
+//TODO
 
 # Configuration Multi-site.
 
