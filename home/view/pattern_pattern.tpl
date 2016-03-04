@@ -4,18 +4,18 @@
 	<head>
 	  <meta charset="utf-8">
 	  <title>{% block title %}{% endblock %}</title>
-	  <meta name="description" content="{% block metaDesc %}Fêtes à thème{% endblock %}" />
+	  <meta name="description" content="{% block metaDesc %}FoxFW CMS{% endblock %}" />
 	  <meta name="keywords" content="{% block metaKey %}{% endblock %}" />
 	  <meta name="author" content="StudioGoupil" />
 	  <meta name="robots" content="all" />
 	  <link rel="icon" type="image/png" href="{% block favicon %}{% endblock %}"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  <meta http-equiv="X-Frame-Options" content="deny">
 
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
 	  {% block css %}{% endblock %}
 	</head>
@@ -45,13 +45,8 @@
 		<footer class="page-footer amber darken-1">
 			{% block footer %}{% endblock %}
 		</footer>
-
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-	   	{% block js %}{% endblock %}
 	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+	{% block js %}{% endblock %}
+
 </html>

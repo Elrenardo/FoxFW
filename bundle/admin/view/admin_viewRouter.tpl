@@ -1,14 +1,14 @@
 {% extends getView('pattern_admin') %}
 
 {% block container %}
-<div>
-	<table class="table table-hover table-striped">
+<div class="container">
+	<p class="flow-text">Vue du Router</p>
+
+	<table class="highlight">
 		<caption style="margin-bottom:20px;">
-			<h3>
-				<span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+			<h5>
 				  <b style="color:red;">Table de routage</b> 
-				<span class="glyphicon glyphicon-random" aria-hidden="true"></span>
-			</h3>
+			</h5>
 		</caption>
 		<tr>
 			<th>Nom Router</th>

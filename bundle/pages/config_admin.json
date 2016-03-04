@@ -1,13 +1,7 @@
 {
-	"Liste Pages":
+	"Gestion Pages":
 	{
 		"router"   :"Page_viewListeAdminPage",
-		"icon"     :"glyphicon-list-alt"
-	},
-
-	"Ajouter page":
-	{
-		"router"   :"Page_addPage",
-		"icon"     :"glyphicon-plus"
+		"icon"     :"description"
 	}
 }

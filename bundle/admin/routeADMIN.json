@@ -1,4 +1,12 @@
 {
+	"PanelAdmin_index":
+	{
+		"path"       : "admin/index",
+		"method"     : "GET",
+		"controller" : "Controller_PanelAdmin#view",
+		"firewall"   : "ADMIN"
+	},
+
 	"PanelAdmin_view":
 	{
 		"path"       : "admin",

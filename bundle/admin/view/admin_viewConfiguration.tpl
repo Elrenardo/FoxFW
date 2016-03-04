@@ -2,12 +2,9 @@
 
 {% block container %}
 <div>
-
-	<h3 style="text-align:center;">
-		<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-		  <b style="color:red;">Configuration ::FoxFWKernel::</b> 
-		<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-	</h3>
+	<div class="container">
+		<p class="flow-text">Configuration ::FoxFWKernel:: et PHPinfo</p>
+	</div>
 
 	<div class="center" >
 	{% for key,i in config %}

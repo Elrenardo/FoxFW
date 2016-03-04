@@ -1,0 +1,7 @@
+{
+	"Gestion Contacts":
+	{
+		"router"   :"contacts_view",
+		"icon"     :"contacts"
+	}
+}

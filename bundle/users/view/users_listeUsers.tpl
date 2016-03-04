@@ -3,17 +3,27 @@
 {% block title %}Liste Page {{ parent() }}{% endblock %}
 
 {% block container %}
-	<div>
+	<div class="container">
+		<p class="flow-text">Gestion des comptes utilisateurs</p>
+	</div>
 
-		<form method="POST" class="fil_ariane" action="{{ router('user_searchListeUsers') }}">
+	<div class="section grey lighten-4">
+		<form method="POST" class="container" action="{{ router('user_searchListeUsers') }}">
 		{{ securityForm() }}
-		    <div class="form-inline form-group">
-		    	<input type="search" class="input-sm form-control" placeholder="Recherche par Email" name="search" style="width:400px;">
-		    	<button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Chercher utilisateur</button>
-		    </div>
+	    	<div class="row">
+		        <div class="input-field col s12">
+		          <i class="material-icons prefix">search</i>
+		          <input id="d_search" name="search" type="text" class="validate">
+		          <label for="d_search">Rechercher un compte utilisateur</label>
+		        </div>
+	    	</div>
     	</form>
+    </div>
+    <div class="divider"></div>
 
-		<table class="table table-hover">
+    <div class="container">
+
+		<table class="highlight">
 			<tr>
 				<th>Email</th>
 				<th>Grade</th>

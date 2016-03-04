@@ -1,15 +1,14 @@
 {% extends getView('pattern_admin') %}
 
 {% block container %}
-<div>
+<div class="container">
+	<p class="flow-text">Vue architecture M.V.C.</p>
 
-	<table class="table table-hover table-striped">
+	<table class="highlight">
 		<caption style="margin-bottom:20px;">
-			<h3>
-				<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+			<h5>
 				  <b style="color:red;">Model</b> 
-				<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-			</h3>
+			</h5>
 		</caption>
 		<tr>
 			<th>Model</th>
@@ -25,13 +24,11 @@
 	</table>
 
 	<hr/>
-	<table class="table table-hover table-striped">
+	<table class="highlight">
 		<caption style="margin-bottom:20px;">
-			<h3>
-				<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+			<h5>
 				  <b style="color:red;">View</b> 
-				<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-			</h3>
+			</h5>
 		</caption>
 		<tr>
 			<th>View</th>
@@ -47,13 +44,11 @@
 	</table>
 
 	<hr/>
-	<table class="table table-hover table-striped">
+	<table class="highlight">
 		<caption style="margin-bottom:20px;">
-			<h3>
-				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+			<h5>
 				  <b style="color:red;">Controller</b> 
-				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-			</h3>
+			</h5>
 		</caption>
 		<tr>
 			<th>Controller</th>

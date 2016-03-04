@@ -24,7 +24,7 @@ class Page
 	//--------------------------------------------------------------------------------
     static public function get( $id )
     {
-    	$data =  R::load( 'page', $id );
+    	$data = R::load( 'page', $id );
         if(!empty($data))
             $data['body'] = Page::getBody( _WEB.Page::$buffer_dir.$data['filename'].'.html' );
         return $data;

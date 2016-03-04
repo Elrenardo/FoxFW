@@ -1,0 +1,11 @@
+{
+	"Route":
+	{
+		"contactsADM" : "bundle/contacts/routeADMIN.json"
+	},
+
+	"Admin":
+	{
+		"contacts":"bundle/contacts/config_admin.json"
+	}
+}

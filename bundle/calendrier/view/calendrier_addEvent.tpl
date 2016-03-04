@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block container %}
-	<div>
+	<div class="container">
 		<div class="info">
 			{% if msg is not empty %}
 				<div>{{ msg|upper }}</div>

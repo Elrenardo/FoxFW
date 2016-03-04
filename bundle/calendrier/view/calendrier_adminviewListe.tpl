@@ -7,6 +7,10 @@
 {% endblock %}
 
 {% block container %}
+<div class="container">
+	<a href="{{ router('calendrier_addEvent') }}" class="waves-effect waves-light btn amber darken-1">Ajouter un événement</a>
+	<hr/>
+	
 		<table class="table table-hover table-striped">
 		<tr>
 			<th>Titre</th>
@@ -43,7 +47,8 @@
 		{% endfor %}
 		</table>
 		{% if compte == 0 %}
-			<h3 style="text-align:center;">Aucun Evénement futur trouvé !</h3>
+			<h5 style="text-align:center;">Aucun Evénement futur trouvé !</h5>
 		{% endif %}
 	</div>
+</div>
 {% endblock %}

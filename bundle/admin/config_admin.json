@@ -1,31 +1,7 @@
 {
-	"Comptes et Permissions":
+	"Administration":
 	{
-		"router"   :"user_viewListeUsers",
-		"icon"     :"glyphicon-user"
-	},
-
-	"Router":
-	{
-		"router"   :"PanelAdmin_viewRouter",
-		"icon"     :"glyphicon-eye-open"
-	},
-
-	"M.V.C.":
-	{
-		"router"   :"PanelAdmin_viewMVC",
-		"icon"     :"glyphicon-eye-open"
-	},
-
-	"::FoxFW:: et PHPInfo":
-	{
-		"router"   :"PanelAdmin_viewConfiguration",
-		"icon"     :"glyphicon-eye-open"
-	},
-
-	"Vider Cache":
-	{
-		"router"   :"PanelAdmin_viderCache",
-		"icon"     :"glyphicon-trash"
+		"router"   :"PanelAdmin_index",
+		"icon"     :"settings"
 	}
 }

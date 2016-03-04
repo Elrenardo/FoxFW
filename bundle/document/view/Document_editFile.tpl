@@ -1,16 +1,12 @@
-<div class="container" style="margin-bottom:50px;">
-
-	<form method="POST" action="{{ router('Document_confirmEditFile') }}" >
-		{{ securityForm() }}
-		<div class="form-group">
-			<b>Contenu du fichier ( F11 plein écran ):</b><br/>
-			<textarea name="body" id="code">{{ document.body }}</textarea>
-			<input type="hidden" name="file" value="{{ document.path }}" />
-		</div>
-		<hr/>
-		<input type="submit" value="Modifier le fichier" class="btn btn-default"/>
-	</form>
-</div>
+<form method="POST" action="{{ router('Document_confirmEditFile') }}" >
+	{{ securityForm() }}
+	<div>
+		<b>Contenu du fichier ( F11 plein écran ):</b><br/>
+		<textarea name="body" id="code">{{ document.body }}</textarea>
+		<input type="hidden" name="file" value="{{ document.path }}" />
+	</div><br/>
+	<input type="submit" value="Modifier le fichier" class="btn btn-default"/>
+</form>
 
 <script type="text/javascript">
     var textarea = document.getElementById('code');
@@ -34,5 +30,5 @@
 	        }
       	}
   	});
-  	editor.setSize('85%', '100%');
+  	editor.setSize('100%', '100%');
 </script>

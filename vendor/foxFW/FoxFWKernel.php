@@ -131,16 +131,6 @@ class FoxFWKernel
 		//security formulaire
 		FoxFWKernel::securityFormSend();
 
-		//twig function ajout d'un token de securite au formulaire
-		$GLOBALS['Twig']->addFunction( new Twig_SimpleFunction('securityForm',
-		function()
-		{
-			$token = FoxFWKernel::getTokenPost();
-			$var  = '<input type="hidden" name="tf_t" value="'.$token['token'].'"/>';
-			$var .= '<input type="hidden" name="tf_u" value="'.$token['clef'].'"/>';
-			return $var;
-		},array('is_safe' => array('html')) ));
-
 		//-------------------------------------------------------------
 		//extension du Kernel !
 		if( isset( $GLOBALS['Config']['Addon'] ))

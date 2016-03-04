@@ -1,13 +1,7 @@
 {
-	"Ajouter Evenement":
-	{
-		"router"   :"calendrier_addEvent",
-		"icon"     :"glyphicon-plus"
-	},
-
-	"Liste Calendrier":
+	"Gestion Calendrier":
 	{
 		"router"   :"calendrier_adminlisteEvent",
-		"icon"     :"glyphicon-list-alt"
+		"icon"     :"today"
 	}
 }

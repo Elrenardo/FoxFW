@@ -2,11 +2,26 @@
 /*--------
 By      : Teysseire Guillaume
 Date    : 12/03/2015
-Update  : 11/01/2016
+Update  : 23/02/2016
 Licence : © Copyright
-Version : 1.2
+Version : 1.3
 -------------------------
 */
+//--------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------
+//
+//
+//
+//--------------------------------------------------------------------------------
+//twig function ajout d'un token de securite au formulaire
+$GLOBALS['Twig']->addFunction( new Twig_SimpleFunction('securityForm',
+function()
+{
+	$token = FoxFWKernel::getTokenPost();
+	$var  = '<input type="hidden" name="tf_t" value="'.$token['token'].'"/>';
+	$var .= '<input type="hidden" name="tf_u" value="'.$token['clef'].'"/>';
+	return $var;
+},array('is_safe' => array('html')) ));
 //--------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------
 //

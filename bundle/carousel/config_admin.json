@@ -2,6 +2,6 @@
 	"Modifier Carousel":
 	{
 		"router"   :"carousel_gestion",
-		"icon"     :"glyphicon-plus"
+		"icon"     :"theaters"
 	}
 }

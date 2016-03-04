@@ -1,3 +1,7 @@
+ html
+ {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+ }
 html,body
 {
 	width:100%;
@@ -38,4 +42,14 @@ nav .menu_admin h4
 nav .menu_admin h4 a
 {
 	color:#FFF;
+}
+
+
+header,main,footer {
+	padding-left:240px;
+}
+@media only screen and (max-width: 992px) {
+	header,main,footer {
+		padding-left:0
+	}
 }

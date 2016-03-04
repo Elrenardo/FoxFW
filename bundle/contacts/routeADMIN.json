@@ -1,0 +1,56 @@
+{
+	"contacts_view":
+	{
+		"path"       : "admin_contacts",
+		"method"     : "GET|POST",
+		"controller" : "Controller_contacts#view",
+		"firewall"   : "ADMIN"
+	},
+
+	"contacts_add":
+	{
+		"path"       : "admin_addcontacts",
+		"method"     : "GET|POST",
+		"controller" : "Controller_contacts#add",
+		"firewall"   : "ADMIN"
+	},
+	"contacts_confirmadd":
+	{
+		"path"       : "admin_confirmaddcontacts",
+		"method"     : "GET|POST",
+		"controller" : "Controller_contacts#confirmAdd",
+		"firewall"   : "ADMIN"
+	},
+
+	"contacts_del":
+	{
+		"path"       : "admin_delcontacts/[**:id]",
+		"method"     : "GET|POST",
+		"controller" : "Controller_contacts#delete",
+		"firewall"   : "ADMIN"
+	},
+
+	"contacts_edit":
+	{
+		"path"       : "admin_editcontacts/[**:id]",
+		"method"     : "GET|POST",
+		"controller" : "Controller_contacts#edit",
+		"firewall"   : "ADMIN"
+	},
+
+	"contacts_editConfirm":
+	{
+		"path"       : "admin_confirmeditcontacts",
+		"method"     : "GET|POST",
+		"controller" : "Controller_contacts#confirmEdit",
+		"firewall"   : "ADMIN"
+	},
+
+	"contacts_search":
+	{
+		"path"       : "admin_searchcontacts",
+		"method"     : "POST",
+		"controller" : "Controller_contacts#search",
+		"firewall"   : "ADMIN"
+	}
+}

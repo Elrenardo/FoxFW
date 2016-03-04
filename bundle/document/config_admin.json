@@ -1,7 +1,7 @@
 {
-	"Editeur document":
+	"Explorateur de fichier":
 	{
 		"router"   :"Document_view",
-		"icon"     :"glyphicon-plus"
+		"icon"     :"library_books"
 	}
 }
